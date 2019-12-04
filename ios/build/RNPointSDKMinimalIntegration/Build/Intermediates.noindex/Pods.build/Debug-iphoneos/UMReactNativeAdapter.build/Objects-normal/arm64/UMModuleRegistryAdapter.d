@@ -1,0 +1,41 @@
+dependencies: \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@unimodules/react-native-adapter/ios/UMReactNativeAdapter/UMModuleRegistryAdapter/UMModuleRegistryAdapter.m \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Target\ Support\ Files/UMReactNativeAdapter/UMReactNativeAdapter-prefix.pch \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@unimodules/react-native-adapter/ios/UMReactNativeAdapter/UMViewManagerAdapter/UMViewManagerAdapter.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTViewManager.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBridgeModule.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/React/RCTInspectorDevServerHelper.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/React/RCTPackagerConnection.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTConvert.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTAnimationType.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBorderStyle.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTLog.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTAssert.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTUtils.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTPointerEvents.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTTextDecorationLineType.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/yoga/Yoga.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/yoga/YGEnums.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/yoga/YGMacros.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/yoga/YGValue.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTEventDispatcher.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBridge.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBridgeDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTJavaScriptLoader.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTFrameUpdate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTInvalidating.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/UIView+React.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTComponent.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMViewManager.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMExportedModule.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMDefines.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMInternalModule.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@unimodules/react-native-adapter/ios/UMReactNativeAdapter/UMBridgeModule.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@unimodules/react-native-adapter/ios/UMReactNativeAdapter/UMNativeModulesProxy/UMNativeModulesProxy.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMModuleRegistry.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMModuleRegistryDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@unimodules/react-native-adapter/ios/UMReactNativeAdapter/UMModuleRegistryAdapter/UMModuleRegistryAdapter.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMModuleRegistryProvider.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/UMCore/UMSingletonModule.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@unimodules/react-native-adapter/ios/UMReactNativeAdapter/UMModuleRegistryAdapter/UMViewManagerAdapterClassesRegistry.h

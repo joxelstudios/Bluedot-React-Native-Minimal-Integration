@@ -1,0 +1,47 @@
+dependencies: \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@bluedot-innovation/react-native-library/ios/BluedotPointSDK.m \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Target\ Support\ Files/react-native-plugin/react-native-plugin-prefix.pch \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/node_modules/@bluedot-innovation/react-native-library/ios/BluedotPointSDK.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBridgeModule.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/React/RCTInspectorDevServerHelper.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Private/React/RCTPackagerConnection.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTEventEmitter.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBridge.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTBridgeDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTJavaScriptLoader.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTFrameUpdate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/Headers/Public/React/React/RCTInvalidating.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Modules/module.modulemap \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPMKShape.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPNamedDescribed.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPRestartAlertDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/MKMapView+BDPointSDK.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPointOverlayRendererFactory.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPointSessionException.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDLocationInfo.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDBeaconInfo.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPSpatialObject.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPSpatialObjectInfo.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDFenceInfo.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDZoneInfo.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDLocation.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPolygon.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPolygonal.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDLineString.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPoint.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDCircle.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPValidatable.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDBoundingBox.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPDeepCopy.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPGeometry.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDGeometry.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPAuthenticationStateProvider.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDGeospatialUnits.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPLocationDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPSessionDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPointDelegate.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDAuthenticationState.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDLocationManager+BDPointSDK.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDLocationManager.h \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/Pods/BluedotPointSDK/PointSDK/BDPointSDK.framework/Headers/BDPointSDK.h

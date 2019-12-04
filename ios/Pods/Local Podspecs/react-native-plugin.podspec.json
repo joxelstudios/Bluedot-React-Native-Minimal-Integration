@@ -1,0 +1,32 @@
+{
+  "name": "react-native-plugin",
+  "version": "1.0.0",
+  "summary": "TODO",
+  "description": "react-native-plugin",
+  "homepage": "https://github.com/Bluedot-Innovation/PointSDK-iOS",
+  "license": {
+    "type": "Copyright",
+    "text": "    Point SDK\n    Created by Bluedot Innovation in 2019.\n    Copyright © 2019 Bluedot Innovation. All rights reserved.\n    By downloading or using the Bluedot Point SDK for iOS, You agree to the Bluedot Terms and Conditions\n    https://bluedot.io/agreements/#terms and Privacy Policy https://bluedot.io/agreements/#privacy\n    and Billing Policy https://bluedot.io/agreements/#billing\n    and acknowledge that such terms govern Your use of and access to the iOS SDK.\n"
+  },
+  "authors": {
+    "Bluedot Innovation": "https://www.bluedot.io"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "swift_versions": "5.0",
+  "source": {
+    "git": "file:///Users/duncanlau/Projects/Cloud/react-native-plugin"
+  },
+  "source_files": "ios/**/*.{h,m,swift}",
+  "requires_arc": true,
+  "dependencies": {
+    "BluedotPointSDK": [
+
+    ],
+    "React": [
+
+    ]
+  },
+  "swift_version": "5.0"
+}

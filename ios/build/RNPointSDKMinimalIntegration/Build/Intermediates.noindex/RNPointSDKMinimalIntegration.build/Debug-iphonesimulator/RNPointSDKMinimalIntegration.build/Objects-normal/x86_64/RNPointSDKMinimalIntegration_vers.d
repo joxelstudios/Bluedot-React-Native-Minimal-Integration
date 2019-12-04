@@ -1,0 +1,2 @@
+dependencies: \
+  /Users/danieltoro/Documents/react-native/RNPointSDKMinimalIntegration/ios/build/RNPointSDKMinimalIntegration/Build/Intermediates.noindex/RNPointSDKMinimalIntegration.build/Debug-iphonesimulator/RNPointSDKMinimalIntegration.build/DerivedSources/RNPointSDKMinimalIntegration_vers.c

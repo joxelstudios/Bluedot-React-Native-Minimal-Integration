@@ -141,6 +141,7 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 9H7C75E224;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -281,10 +282,13 @@
 			baseConfigurationReference = 185285A76CAF4ADEAE25CD5B /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bluedot Innovation (GF4VWR257X)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 9H7C75E224;
 				INFOPLIST_FILE = RNPointSDKMinimalIntegration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -293,6 +297,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bluedot.RNPointSDKMinimalIntegration;
 				PRODUCT_NAME = RNPointSDKMinimalIntegration;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development io.bluedot.*";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -302,9 +307,12 @@
 			baseConfigurationReference = DC818DB5566F4DD6E75F36B1 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bluedot Innovation Pty Ltd (9H7C75E224)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9H7C75E224;
 				INFOPLIST_FILE = RNPointSDKMinimalIntegration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -313,6 +321,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bluedot.RNPointSDKMinimalIntegration;
 				PRODUCT_NAME = RNPointSDKMinimalIntegration;
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc io.bluedot.*";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

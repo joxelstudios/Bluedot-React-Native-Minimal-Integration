@@ -4,24 +4,20 @@ import BluedotPointSdk from '@bluedot-innovation/react-native-library';
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import { requestLocationPermissions, requestBluetoothPermissions } from './helpers/permissionsHandler';
 import { sendLocalNotification } from './helpers/notifications'
-import { OS } from './enums'
+import { OS, LOCATION_PERMISSIONS } from './enums'
 import styles from './styles' 
 
 // DARREN API KEY
-const APIKEY = '7a22ce60-1669-11ea-b4f3-0a18166f394e';
+// const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
 
 // DANIEL API KEY
-// const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
-
-const TRUNCATE_LENGTH = 70
+const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
 
 export default class App extends Component {
   state = {
-    status: 'starting',
-    message: '--',
     buttonTitle: 'Authenticate',
     ruleRequestMessage: null,
-    locationPermissions: 'Always',
+    locationPermissions: '',
     eventName: '',
     eventData: ''
   };
@@ -44,11 +40,11 @@ export default class App extends Component {
       const hasBluetoothPermission = await check(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) === RESULTS.GRANTED
 
       if (hasLocationAlwaysPermission) {
-        this.setState({ locationPermissions: 'Always' })
+        this.setState({ locationPermissions: LOCATION_PERMISSIONS.ALWAYS })
       }
 
       if (hasLocationWhileInUsePermission) {
-        this.setState({ locationPermissions: 'WhileInUse' })
+        this.setState({ locationPermissions: LOCATION_PERMISSIONS.WHILE_IN_USE })
       }
 
       if (hasBluetoothPermission) {
@@ -94,25 +90,26 @@ export default class App extends Component {
     })
 
     BluedotPointSdk.on('startRequiringUserInterventionForBluetooth', (event) => {
-      const eventData = JSON.stringify(event).substring(0, TRUNCATE_LENGTH)
+      const eventData = JSON.stringify(event)
       this.setState({ eventName: 'startRequiringUserInterventionForBluetooth', eventData })
     })
 
     BluedotPointSdk.on('stopRequiringUserInterventionForBluetooth', (event) => {
-      const eventData = JSON.stringify(event, null, 2).substring(0, TRUNCATE_LENGTH)
+      const eventData = JSON.stringify(event)
       this.setState({ eventName: 'stopRequiringUserInterventionForBluetooth', eventData })
     })
 
     BluedotPointSdk.on('startRequiringUserInterventionForLocationServices', (event) => {
-      const eventData = JSON.stringify(event, null, 2).substring(0, TRUNCATE_LENGTH)
+      const eventData = JSON.stringify(event)
       this.setState({ eventName: 'startRequiringUserInterventionForLocationServices', eventData })
     })
 
     BluedotPointSdk.on('stopRequiringUserInterventionForLocationServices', (event) => {
-      const eventData = JSON.stringify(event, null, 2).substring(0, TRUNCATE_LENGTH)
+      const eventData = JSON.stringify(event)
       this.setState({ eventName: 'stopRequiringUserInterventionForLocationServices', eventData })
     })
   }
+  
 
   handlePress = () => {
     if (this.state.buttonTitle === 'Authenticate') {
@@ -136,7 +133,7 @@ export default class App extends Component {
       });
     }
 
-    BluedotPointSdk.authenticate(APIKEY, 'Always', onSuccess, onFail)
+    BluedotPointSdk.authenticate(APIKEY, this.state.locationPermissions, onSuccess, onFail)
   }
 
   handleLogout = () => {
@@ -181,4 +178,3 @@ export default class App extends Component {
     );
   }
 }
-

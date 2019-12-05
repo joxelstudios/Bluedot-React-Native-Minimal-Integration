@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, NativeEventEmitter, Button } from 'react-native';
-import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import { Platform, Text, View, Button } from 'react-native';
 import BluedotPointSdk from '@bluedot-innovation/react-native-library';
-import { requestLocationPremissions } from './helpers/permissionsHandler';
-import { check, PERMISSIONS } from 'react-native-permissions';
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
+import { requestLocationPermissions, requestBluetoothPermissions } from './helpers/permissionsHandler';
+import { sendLocalNotification } from './helpers/notifications'
+import { OS } from './enums'
+import styles from './styles' 
 
 // DARREN API KEY
-const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
+const APIKEY = '7a22ce60-1669-11ea-b4f3-0a18166f394e';
 
 // DANIEL API KEY
 // const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
@@ -26,11 +28,20 @@ export default class App extends Component {
 
   componentDidMount = async () => {
     // Ask location permission 
-    requestLocationPremissions();
+    await requestLocationPermissions();
+    await requestBluetoothPermissions()
 
-    if (Platform.OS === 'ios') {
-      const hasLocationAlwaysPermission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS) === 'granted'
-      const hasLocationWhileInUsePermission = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE) === 'granted'
+    const channelId = 'Bluedot React'
+    const channelName = 'Bluedot React'
+    const title = 'Bluedot Foreground Service'
+    const content = "This app is running a foreground service using location services"
+
+    BluedotPointSdk.setForegroundNotification(channelId, channelName, title, content, true); 
+
+    if (Platform.OS === OS.IOS) {
+      const hasLocationAlwaysPermission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS) === RESULTS.GRANTED
+      const hasLocationWhileInUsePermission = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE) === RESULTS.GRANTED
+      const hasBluetoothPermission = await check(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) === RESULTS.GRANTED
 
       if (hasLocationAlwaysPermission) {
         this.setState({ locationPermissions: 'Always' })
@@ -39,87 +50,65 @@ export default class App extends Component {
       if (hasLocationWhileInUsePermission) {
         this.setState({ locationPermissions: 'WhileInUse' })
       }
+
+      if (hasBluetoothPermission) {
+        this.setState({ bluetoothPermission: RESULTS.GRANTED })
+      }
     }
 
-    const eventEmitter = new NativeEventEmitter(BluedotPointSdk)
-
-    eventEmitter.addListener('zoneInfoUpdate', (event) => {
-      const eventData = JSON.stringify(event).substring(0, TRUNCATE_LENGTH)
+    BluedotPointSdk.on('zoneInfoUpdate', (event) => {
+      const eventData = `There are ${event.zoneInfos.length} zones`
       this.setState({ eventName: 'zoneInfoUpdate', eventData })
     })
 
-    eventEmitter.addListener('checkedIntoFence', (event) => {
+    BluedotPointSdk.on('checkedIntoFence', (event) => {
       const message = `You have checked in ${event.zoneInfo.name}`
-
-      if (Platform.OS === 'ios') {
-        PushNotificationIOS.presentLocalNotification({
-          alertTitle: 'BluedotPointSdk',
-          alertBody: message,
-          isSilent: true
-        })
-      }
+  
+      sendLocalNotification(message)
 
       this.setState({ eventName: 'checkedIntoFence', eventData: message })
     })
 
-    eventEmitter.addListener('checkedOutFromFence', (event) => {
+    BluedotPointSdk.on('checkedOutFromFence', (event) => {
       const message = `You have checked out from ${event.zoneInfo.name}`
 
-      if (Platform.OS === 'ios') {
-        PushNotificationIOS.presentLocalNotification({
-          alertTitle: 'BluedotPointSdk',
-          alertBody: message,
-          isSilent: true
-        })
-      }
+      sendLocalNotification(message)
 
       this.setState({ eventName: 'checkedOutFromFence', eventData: message })
     })
 
-    eventEmitter.addListener('checkedIntoBeacon', (event) => {
+    BluedotPointSdk.on('checkedIntoBeacon', (event) => {
       const message = `You have checked in ${event.zoneInfo.name}`
 
-      if (Platform.OS === 'ios') {
-        PushNotificationIOS.presentLocalNotification({
-          alertTitle: 'BluedotPointSdk',
-          alertBody: message,
-          isSilent: true
-        })
-      }
+      sendLocalNotification(message)
 
       this.setState({ eventName: 'checkedIntoBeacon', eventData: message })
     })
 
-    eventEmitter.addListener('checkedOutFromBeacon', (event) => {
+    BluedotPointSdk.on('checkedOutFromBeacon', (event) => {
       const message = `You have checked out from ${event.zoneInfo.name}`
 
-      if (Platform.OS === 'ios') {
-        PushNotificationIOS.presentLocalNotification({
-          alertTitle: 'BluedotPointSdk',
-          alertBody: message,
-          isSilent: true
-        })
-      }
+      sendLocalNotification(message)
 
       this.setState({ eventName: 'checkedOutFromBeacon', eventData })
     })
 
-    eventEmitter.addListener('startRequiringUserInterventionForBluetooth', (event) => {
+    BluedotPointSdk.on('startRequiringUserInterventionForBluetooth', (event) => {
       const eventData = JSON.stringify(event).substring(0, TRUNCATE_LENGTH)
       this.setState({ eventName: 'startRequiringUserInterventionForBluetooth', eventData })
     })
 
-    eventEmitter.addListener('stopRequiringUserInterventionForBluetooth', (event) => {
+    BluedotPointSdk.on('stopRequiringUserInterventionForBluetooth', (event) => {
       const eventData = JSON.stringify(event, null, 2).substring(0, TRUNCATE_LENGTH)
       this.setState({ eventName: 'stopRequiringUserInterventionForBluetooth', eventData })
     })
 
-    eventEmitter.addListener('startRequiringUserInterventionForLocationServices', (event) => {
+    BluedotPointSdk.on('startRequiringUserInterventionForLocationServices', (event) => {
       const eventData = JSON.stringify(event, null, 2).substring(0, TRUNCATE_LENGTH)
       this.setState({ eventName: 'startRequiringUserInterventionForLocationServices', eventData })
     })
 
-    eventEmitter.addListener('stopRequiringUserInterventionForLocationServices', (event) => {
+    BluedotPointSdk.on('stopRequiringUserInterventionForLocationServices', (event) => {
       const eventData = JSON.stringify(event, null, 2).substring(0, TRUNCATE_LENGTH)
       this.setState({ eventName: 'stopRequiringUserInterventionForLocationServices', eventData })
     })
@@ -193,47 +182,3 @@ export default class App extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  titleContainer: {
-    alignItems: 'center',
-    marginBottom: 80
-  },
-  title: {
-   fontWeight: '800',
-   fontSize: 18
-  },
-  eventContainer: {
-    alignItems: 'center',
-    marginBottom: 80
-  },
-  eventTitle: {
-    fontSize: 14,
-    letterSpacing: 0.2,
-    fontWeight: '700',
-    textAlign: 'center',
-    marginBottom: 10,
-    color: 'dimgray'
-  },
-  eventNameContainer: {
-    marginBottom: 40
-  },  
-  eventName:{
-    fontSize: 22,
-    textAlign: 'center'
-  },  
-  eventDataContainer: {
-    maxHeight: 200,
-    maxWidth: 320
-  },
-  button: {
-    width: 200,
-    height: 50,
-    backgroundColor: 'tomato'
-  }
-});

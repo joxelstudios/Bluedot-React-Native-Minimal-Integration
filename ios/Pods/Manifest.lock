@@ -67,7 +67,7 @@ PODS:
     - RNPermissions
   - React (0.59.10):
     - React/Core (= 0.59.10)
-  - react-native-plugin (1.0.0):
+  - react-native-plugin (1.0.6-beta):
     - BluedotPointSDK
     - React
   - React/Core (0.59.10):
@@ -374,7 +374,7 @@ SPEC CHECKSUMS:
   Permission-SpeechRecognition: 49ab82e33c796e7406fda69cb309fbef123ff62e
   Permission-StoreKit: c154e56e47a73cf514caf0983210a02e4b092c83
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
-  react-native-plugin: 2a6ece1cf7862f094ffb5ebfc5f3cba374d89572
+  react-native-plugin: 00082a6b496bd3174a2c1271ba0bf837dcb7a140
   RNCPushNotificationIOS: 5403d137a49c55f0dc2273be8473873e934359cd
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNPermissions: 75d638022b2b7d8fbb43a883d0254846b302b741

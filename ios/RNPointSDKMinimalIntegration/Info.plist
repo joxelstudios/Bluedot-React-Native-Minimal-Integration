@@ -59,6 +59,10 @@
 	<string>Give React Native Point SDK Minimal Integration periences permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>Allow React Native Point SDK Minimal Integration to access your reminders</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Allow React Native Point SDK Minimal Integration to access your bluetooth</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Allow React Native Point SDK Minimal Integration to access your bluetooth</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

@@ -6,11 +6,11 @@
 	<dict>
 		<key>Base.lproj/LaunchScreen.nib/objects-13.0+.nib</key>
 		<data>
-		cgC1sagqdxjhjvbtGzSmQ2hdeSI=
+		FmetnyPP2nigfedJEG1ePskTRwY=
 		</data>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<data>
-		IeZdMuiQGV06Rs66eGfLoEZ3eFQ=
+		EzcYkcOd5PJgE3A3RQO0ERG53LU=
 		</data>
 		<key>Frameworks/BDPointSDK.framework/BDDataModel.momd/BDDataModel_1.13.1.mom</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		XMvywo3Ka7QwEEZyn9x2z8gG9Sc=
+		eQ7iH5xaAaGlcg/wMeO1JjHDlcM=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -71,22 +71,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cgC1sagqdxjhjvbtGzSmQ2hdeSI=
+			FmetnyPP2nigfedJEG1ePskTRwY=
 			</data>
 			<key>hash2</key>
 			<data>
-			9q5TnDJ+Q2JGbLa73PUMP4Jju+nB2qNfMkcjasqvQww=
+			ynR+x8Bx25WVsUtqbEmVWbBPvhm+FqEvrmfAXMQ9bV0=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IeZdMuiQGV06Rs66eGfLoEZ3eFQ=
+			EzcYkcOd5PJgE3A3RQO0ERG53LU=
 			</data>
 			<key>hash2</key>
 			<data>
-			/phaVkzjyyukrLMYOpCk8TB9s1N1ICB4xdsa8GqQ7XU=
+			QRwPNg2RFT7IZhQ+Ry/gk/Drt84AbmDPMSbkds6hDLU=
 			</data>
 		</dict>
 		<key>Frameworks/BDPointSDK.framework/BDDataModel.momd/BDDataModel_1.13.1.mom</key>

@@ -1,7 +1,9 @@
 import { Platform, PermissionsAndroid } from 'react-native';
-// TODO: make it work for ios 
-export let requestLocationPremissions = async () => {
-    if ( Platform.OS === 'android') {
+import {request, PERMISSIONS} from 'react-native-permissions';
+import { OS } from '../enums'
+
+export let requestLocationPermissions = async () => {
+    if (Platform.OS === OS.ANDROID) {
         let hasLocationPermissions = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
 
         if (!hasLocationPermissions) {
@@ -9,7 +11,13 @@ export let requestLocationPremissions = async () => {
         };
     }
 
-    if ( Platform.OS === 'ios') {
+    if (Platform.OS === OS.IOS) {
         navigator.geolocation.requestAuthorization()
     }
 };
+
+export let requestBluetoothPermissions = async () => {
+    if (Platform.OS === OS.IOS) {
+        await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL)
+    }
+}

@@ -1,7 +1,7 @@
 {
   "name": "react-native-plugin",
-  "version": "1.0.0",
-  "summary": "TODO",
+  "version": "1.0.6-beta",
+  "summary": "Bluedot Point SDK React Native SDK; integrates the Android and iOS Point SDK libraries",
   "description": "react-native-plugin",
   "homepage": "https://github.com/Bluedot-Innovation/PointSDK-iOS",
   "license": {

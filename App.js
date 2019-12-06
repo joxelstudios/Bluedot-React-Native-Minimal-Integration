@@ -8,10 +8,10 @@ import { OS, LOCATION_PERMISSIONS } from './enums'
 import styles from './styles' 
 
 // DARREN API KEY
-// const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
+const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
 
 // DANIEL API KEY
-const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
+// const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
 
 export default class App extends Component {
   state = {
@@ -53,15 +53,11 @@ export default class App extends Component {
     }
 
     BluedotPointSdk.on('zoneInfoUpdate', (event) => {
-      console.log('zoneInfoUpdate')
-
       const eventData = `There are ${event.zoneInfos.length} zones`
       this.setState({ eventName: 'zoneInfoUpdate', eventData })
     })
 
     BluedotPointSdk.on('checkedIntoFence', (event) => {
-      console.log('checkedIntoFence')
-
       const message = `You have checked in ${event.zoneInfo.name}`
   
       sendLocalNotification(message)
@@ -70,8 +66,6 @@ export default class App extends Component {
     })
 
     BluedotPointSdk.on('checkedOutFromFence', (event) => {
-      console.log('checkedOutFromFence')
-
       const message = `You have checked out from ${event.zoneInfo.name}`
 
       sendLocalNotification(message)
@@ -80,8 +74,6 @@ export default class App extends Component {
     })
 
     BluedotPointSdk.on('checkedIntoBeacon', (event) => {
-      console.log('checkedIntoBeacon')
-
       const message = `You have checked in ${event.zoneInfo.name}`
 
       sendLocalNotification(message)
@@ -90,8 +82,6 @@ export default class App extends Component {
     })
 
     BluedotPointSdk.on('checkedOutFromBeacon', (event) => {
-      console.log('checkedOutFromBeacon')
-
       const message = `You have checked out from ${event.zoneInfo.name}`
 
       sendLocalNotification(message)
@@ -100,29 +90,21 @@ export default class App extends Component {
     })
 
     BluedotPointSdk.on('startRequiringUserInterventionForBluetooth', (event) => {
-      console.log('startRequiringUserInterventionForBluetooth')
-
       const eventData = JSON.stringify(event)
       this.setState({ eventName: 'startRequiringUserInterventionForBluetooth', eventData })
     })
 
     BluedotPointSdk.on('stopRequiringUserInterventionForBluetooth', (event) => {
-      console.log('stopRequiringUserInterventionForBluetooth')
-
       const eventData = JSON.stringify(event)
       this.setState({ eventName: 'stopRequiringUserInterventionForBluetooth', eventData })
     })
 
     BluedotPointSdk.on('startRequiringUserInterventionForLocationServices', (event) => {
-      console.log('startRequiringUserInterventionForLocationServices')
-
       const eventData = JSON.stringify(event)
       this.setState({ eventName: 'startRequiringUserInterventionForLocationServices', eventData })
     })
 
     BluedotPointSdk.on('stopRequiringUserInterventionForLocationServices', (event) => {
-      console.log('stopRequiringUserInterventionForLocationServices')
-
       const eventData = JSON.stringify(event)
       this.setState({ eventName: 'stopRequiringUserInterventionForLocationServices', eventData })
     })

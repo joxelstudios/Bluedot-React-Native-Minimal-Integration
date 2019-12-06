@@ -18,7 +18,8 @@ export const sendLocalNotification = (message) => {
         PushNotification.localNotification({
             title,
             message,
-            playSound: false
+            playSound: false,
+            smallIcon: "ic_launcher"
         })
     }
 }

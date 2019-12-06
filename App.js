@@ -8,10 +8,13 @@ import { OS, LOCATION_PERMISSIONS } from './enums'
 import styles from './styles' 
 
 // DARREN API KEY
-const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
+// const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
 
 // DANIEL API KEY
-// const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
+const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
+
+// NEHA API KEY
+// const APIKEY = '0811c6a0-0251-11e9-aebf-02e673959816';
 
 export default class App extends Component {
   state = {
@@ -32,7 +35,12 @@ export default class App extends Component {
     const title = 'Bluedot Foreground Service'
     const content = "This app is running a foreground service using location services"
 
-    BluedotPointSdk.setForegroundNotification(channelId, channelName, title, content, true); 
+    BluedotPointSdk.setForegroundNotification(channelId, channelName, title, content, true);
+
+    // Set custom event metadata
+    BluedotPointSdk.setCustomEventMetaData({
+      userId: 'user_id_goes_here'
+    })
 
     if (Platform.OS === OS.IOS) {
       const hasLocationAlwaysPermission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS) === RESULTS.GRANTED
@@ -108,6 +116,9 @@ export default class App extends Component {
       const eventData = JSON.stringify(event)
       this.setState({ eventName: 'stopRequiringUserInterventionForLocationServices', eventData })
     })
+
+  
+
   }
   
 

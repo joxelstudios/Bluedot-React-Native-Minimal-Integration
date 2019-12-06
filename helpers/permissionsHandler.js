@@ -2,9 +2,9 @@ import { Platform, PermissionsAndroid } from 'react-native';
 import {request, PERMISSIONS} from 'react-native-permissions';
 import { OS } from '../enums'
 
-export let requestLocationPermissions = async () => {
+export const requestLocationPermissions = async () => {
     if (Platform.OS === OS.ANDROID) {
-        let hasLocationPermissions = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+        const hasLocationPermissions = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
 
         if (!hasLocationPermissions) {
             await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
@@ -16,8 +16,12 @@ export let requestLocationPermissions = async () => {
     }
 };
 
-export let requestBluetoothPermissions = async () => {
+export const requestBluetoothPermissions = async () => {
     if (Platform.OS === OS.IOS) {
         await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL)
     }
+}
+
+export const validateRequiredPermissions = async () => {
+
 }

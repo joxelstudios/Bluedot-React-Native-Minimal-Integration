@@ -149,6 +149,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-push-notification')
     implementation project(':react-native-permissions')
     implementation project(':@bluedot-innovation_react-native-library')
     implementation project(':react-native-screens')
@@ -157,6 +158,11 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    
+    def appCenterSdkVersion = '2.5.0'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
     addUnimodulesDependencies()
 }
 

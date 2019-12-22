@@ -1,5 +1,6 @@
 import { Platform, PermissionsAndroid } from 'react-native';
 import {request, PERMISSIONS} from 'react-native-permissions';
+import Geolocation from '@react-native-community/geolocation';
 import { OS } from '../enums'
 
 export const requestLocationPermissions = async () => {
@@ -12,7 +13,7 @@ export const requestLocationPermissions = async () => {
     }
 
     if (Platform.OS === OS.IOS) {
-        navigator.geolocation.requestAuthorization()
+        Geolocation.requestAuthorization()
     }
 };
 

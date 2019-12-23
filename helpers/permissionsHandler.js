@@ -22,7 +22,3 @@ export const requestBluetoothPermissions = async () => {
         await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL)
     }
 }
-
-export const validateRequiredPermissions = async () => {
-
-}

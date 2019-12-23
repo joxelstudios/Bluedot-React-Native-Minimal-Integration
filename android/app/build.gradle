@@ -152,7 +152,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 dependencies {
     implementation project(':@react-native-community_geolocation')
-    implementation project(':neha-react-native-library')
+    implementation project(':@bluedot-innovation_react-native-library')
     implementation project(':react-native-push-notification')
     implementation project(':react-native-permissions')
     implementation project(':react-native-screens')

@@ -65,7 +65,7 @@ target 'RNPointSDKMinimalIntegration' do
   pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
 
   pod 'neha-react-native-library', :path => '../node_modules/neha-react-native-library'
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
+
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
 end

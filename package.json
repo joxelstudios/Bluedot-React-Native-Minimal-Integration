@@ -14,7 +14,7 @@
     "metro": "^0.56.0",
     "metro-babel7-plugin-react-transform": "^0.54.1",
     "metro-core": "^0.57.0",
-    "@bluedot-innovation/react-native-library": "^1.0.1",
+    "bluedot-react-native": "^1.0.1",
     "react": "16.9.0",
     "react-devtools": "^4.2.1",
     "react-dom": "16.8.3",

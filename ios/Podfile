@@ -64,8 +64,6 @@ target 'RNPointSDKMinimalIntegration' do
 
   pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
 
-  pod 'react-native-plugin', :path => '../node_modules/@bluedot-innovation/react-native-library'
-
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
 end

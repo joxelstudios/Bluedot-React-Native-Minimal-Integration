@@ -1,1 +1,0 @@
-../../../../../node_modules/@bluedot-innovation/react-native-library/ios/BluedotPointSDK.h

@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "React Native Point SDK Minimal Integration",
+    "name": "RNPointSDKMinimalIntegration",
     "slug": "RNPointSDKMinimalIntegration",
+    "appKey": "RNPointSDKMinimalIntegration",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, Text, View, Button } from 'react-native';
+import { Platform, Text, View, Button, RCTDeviceEventEmitter} from 'react-native';
 import BluedotPointSdk from '@bluedot-innovation/react-native-library';
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import { requestLocationPermissions, requestBluetoothPermissions } from './helpers/permissionsHandler';
@@ -8,13 +8,14 @@ import { OS, LOCATION_PERMISSIONS } from './enums'
 import styles from './styles' 
 
 // DARREN API KEY
-// const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
+ //const APIKEY = 'c2674ef0-5d4f-11e8-90a2-0af2bfcd2e22';
 
 // DANIEL API KEY
-const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
+//const APIKEY = '647bff30-c8c1-11e6-b298-b8ca3a6b879d';
+
 
 // NEHA API KEY
-// const APIKEY = '0811c6a0-0251-11e9-aebf-02e673959816';
+ const APIKEY = '0811c6a0-0251-11e9-aebf-02e673959816';
 
 export default class App extends Component {
   state = {
@@ -26,6 +27,7 @@ export default class App extends Component {
   };
 
   componentDidMount = async () => {
+
     // Ask location permission 
     await requestLocationPermissions();
     await requestBluetoothPermissions()

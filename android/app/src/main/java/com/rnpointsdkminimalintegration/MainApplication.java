@@ -3,6 +3,7 @@ package com.rnpointsdkminimalintegration;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 import com.reactlibrary.BluedotPointSdkPackage;
@@ -43,6 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new GeolocationPackage(),
             new ReactNativePushNotificationPackage(),
             new RNPermissionsPackage(),
             new BluedotPointSdkPackage(),

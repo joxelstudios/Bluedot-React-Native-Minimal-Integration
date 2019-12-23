@@ -103,7 +103,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.61.2"
     }
     splits {
         abi {
@@ -147,11 +147,14 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+def enableHermes = project.ext.react.get("enableHermes", false);
+def jscFlavor = 'org.webkit:android-jsc:+'
 
 dependencies {
+    implementation project(':@react-native-community_geolocation')
+    implementation project(':@bluedot-innovation_react-native-library')
     implementation project(':react-native-push-notification')
     implementation project(':react-native-permissions')
-    implementation project(':@bluedot-innovation_react-native-library')
     implementation project(':react-native-screens')
     implementation project(':react-native-reanimated')
     implementation project(':react-native-gesture-handler')
@@ -162,6 +165,14 @@ dependencies {
     def appCenterSdkVersion = '2.5.0'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+    if (enableHermes) {
+        def hermesPath = "../../node_modules/hermesvm/android/";
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
+    } else {
+        implementation jscFlavor
+    }
 
     addUnimodulesDependencies()
 }

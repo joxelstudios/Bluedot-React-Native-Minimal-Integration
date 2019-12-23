@@ -1,10 +1,10 @@
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
+include ':@bluedot-innovation_react-native-library'
+project(':@bluedot-innovation_react-native-library').projectDir = new File(rootProject.projectDir, '../node_modules/@bluedot-innovation/react-native-library/android')
 include ':react-native-push-notification'
 project(':react-native-push-notification').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-push-notification/android')
 include ':react-native-permissions'
 project(':react-native-permissions').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-permissions/android')
-include ':@bluedot-innovation_react-native-library'
-project(':@bluedot-innovation_react-native-library').projectDir = new File(rootProject.projectDir, '../node_modules/@bluedot-innovation/react-native-library/android')
 include ':react-native-screens'
 project(':react-native-screens').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-screens/android')
 include ':react-native-reanimated'

@@ -7,7 +7,7 @@ import { sendLocalNotification } from './helpers/notifications'
 import { OS, LOCATION_PERMISSIONS } from './enums'
 import styles from './styles' 
 
-const APIKEY = 'api_key_goes_here';
+const PROJECTID = 'project_id_goes_here';
 
 export default class App extends Component {
   state = {
@@ -138,7 +138,7 @@ export default class App extends Component {
       });
     }
 
-    BluedotPointSdk.authenticate(APIKEY, this.state.locationPermissions, onSuccess, onFail)
+    BluedotPointSdk.authenticate(PROJECTID, this.state.locationPermissions, onSuccess, onFail)
   }
 
   handleLogout = () => {

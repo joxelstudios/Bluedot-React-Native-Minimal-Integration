@@ -7,7 +7,7 @@ import { sendLocalNotification } from './helpers/notifications'
 import { OS, LOCATION_PERMISSIONS } from './enums'
 import styles from './styles' 
 
-const PROJECTID = '90dd5654-b777-40f0-95c8-4ca596520df3';
+const PROJECTID = 'project_id_goes_here';
 
 export default class App extends Component {
   state = {

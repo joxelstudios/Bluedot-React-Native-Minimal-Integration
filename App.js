@@ -5,6 +5,7 @@ import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import { requestLocationPermissions, requestBluetoothPermissions } from './helpers/permissionsHandler';
 import { sendLocalNotification } from './helpers/notifications'
 import { OS, LOCATION_PERMISSIONS } from './enums'
+import Tempo from './Tempo'
 import styles from './styles' 
 
 const PROJECTID = 'project_id_goes_here';
@@ -12,10 +13,12 @@ const PROJECTID = 'project_id_goes_here';
 export default class App extends Component {
   state = {
     buttonTitle: 'Authenticate',
+    isAuthenticated: false,
     ruleRequestMessage: null,
     locationPermissions: '',
     eventName: '',
-    eventData: ''
+    eventData: '',
+    hasTempoStarted: false
   };
 
   componentDidMount = async () => {
@@ -36,6 +39,7 @@ export default class App extends Component {
       userId: 'user_id_goes_here'
     })
 
+  
     if (Platform.OS === OS.IOS) {
       const hasLocationAlwaysPermission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS) === RESULTS.GRANTED
       const hasLocationWhileInUsePermission = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE) === RESULTS.GRANTED
@@ -110,11 +114,26 @@ export default class App extends Component {
       const eventData = JSON.stringify(event)
       this.setState({ eventName: 'stopRequiringUserInterventionForLocationServices', eventData })
     })
+    
+    // Tempo Events
+    BluedotPointSdk.on('tempoStarted', (event) => {
+      const eventData = JSON.stringify(event)
+      this.setState({ eventName: 'tempoStarted', eventData, hasTempoStarted: true })
+    })
+
+    BluedotPointSdk.on('tempoStopped', (event) => {
+      const eventData = JSON.stringify(event)
+      this.setState({ eventName: 'tempoStopped', eventData, hasTempoStarted: false })
+    })
+
+    BluedotPointSdk.on('tempoStartError', (event) => {
+      const eventData = JSON.stringify(event)
+      this.setState({ eventName: 'tempoStartError', eventData, hasTempoStarted: false })
+    })
   }
-  
 
   handlePress = () => {
-    if (this.state.buttonTitle === 'Authenticate') {
+    if (!this.state.isAuthenticated) {
       this.handleAuthenticate();
     }
     else {
@@ -123,14 +142,15 @@ export default class App extends Component {
   }
 
   handleAuthenticate = () => {
-    let onSuccess = () => {
+    const onSuccess = () => {
       this.setState({
-        buttonTitle : 'Logout',
+        isAuthenticated : true,
       });
     }
 
-    let onFail = () => {
+    const onFail = () => {
       this.setState({
+        isAuthenticated : false,
         eventData: '---   AUTHENTICATION FAILED    ---',
       });
     }
@@ -139,20 +159,21 @@ export default class App extends Component {
   }
 
   handleLogout = () => {
-    BluedotPointSdk.logOut(() => {
+    const onSuccess = () => {
       this.setState({
-        buttonTitle: 'Authenticate',
+        isAuthenticated: false,
         eventName: '',
         eventData: ''
-
       });
-    },
-      () => {
-        this.setState({
-          eventData: 'Fail logging out',
-        });
-      }
-    );
+    }
+
+    const onFail = () => {
+      this.setState({
+        eventData: 'Fail logging out',
+      });
+    }
+
+    BluedotPointSdk.logOut(onSuccess, onFail);
   };
 
   render() {
@@ -175,7 +196,13 @@ export default class App extends Component {
           </View>
         </View>
 
-        <Button title={this.state.buttonTitle} onPress={this.handlePress} />
+        <Button title={ this.state.isAuthenticated ? 'Logout' : 'Authenticate' } onPress={this.handlePress} />
+
+        { 
+          this.state.isAuthenticated && (
+            <Tempo hasStarted={this.state.hasTempoStarted} />
+          )
+        }      
       </View>
     );
   }

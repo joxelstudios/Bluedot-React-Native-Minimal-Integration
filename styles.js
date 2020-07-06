@@ -42,6 +42,16 @@ const styles = StyleSheet.create({
         width: 200,
         height: 50,
         backgroundColor: 'tomato'
+    },
+    textInput: {
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+        padding: 2,
+        marginBottom: 20
+    },
+    tempoWrapper: {
+        marginTop: 20,
     }
 });
 

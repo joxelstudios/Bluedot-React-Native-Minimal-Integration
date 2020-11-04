@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.gitlab.bluedotio.android:point_sdk_android:15.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8bb89f147291d2e52ddfcc6461ec032f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8bb89f147291d2e52ddfcc6461ec032f/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.gitlab.bluedotio.android/point_sdk_android/15.2.0/c1e5cde565f5d9ad6f412497bbc46a19f1c71227/point_sdk_android-15.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

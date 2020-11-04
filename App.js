@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Platform, Text, View, Button } from 'react-native';
 import BluedotPointSdk from '@bluedot-innovation/bluedot-react-native';
 import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
@@ -8,24 +8,28 @@ import { OS, LOCATION_PERMISSIONS } from './enums'
 import Tempo from './Tempo'
 import styles from './styles' 
 
-const PROJECTID = 'project_id_goes_here';
+const PROJECTID = '4269e393-0870-4d37-a4d0-574f7ef8fe2f';
 
-export default class App extends Component {
-  state = {
-    buttonTitle: 'Authenticate',
-    isAuthenticated: false,
-    ruleRequestMessage: null,
-    locationPermissions: '',
-    eventName: '',
-    eventData: '',
-    hasTempoStarted: false
-  };
+export default function App () {
+  const [ isAuthenticated, setIsAuthenticated ] = useState(false)
+  const [ locationPermissions, setLocationPermissions ] = useState('')
+  const [ bluetoothPermission, setBluetoothPermission ] = useState('')
+  const [ eventName, setEventName ] = useState('')
+  const [ eventData, setEventData ] = useState('')
+  const [ hasTempoStarted, setHasTempoStarted ] = useState(false)
+  const [ installRef, setInstallRef ] = useState(null)
 
-  componentDidMount = async () => {
+  // TEMPORARY
+  const [ callbackCounter, setCallbackCounter ] = useState(0)
 
+
+  React.useEffect(() => {
     // Ask location permission 
-    await requestLocationPermissions();
-    await requestBluetoothPermissions()
+    requestLocationPermissions();
+    requestBluetoothPermissions()
+
+    // Get device's Install Reference
+    BluedotPointSdk.getInstallRef().then(value => setInstallRef(value))
 
     const channelId = 'Bluedot React'
     const channelName = 'Bluedot React'
@@ -33,177 +37,198 @@ export default class App extends Component {
     const content = "This app is running a foreground service using location services"
 
     BluedotPointSdk.setForegroundNotification(channelId, channelName, title, content, true);
-
+    
     // Set custom event metadata
     BluedotPointSdk.setCustomEventMetaData({
-      userId: 'user_id_goes_here'
+      "CustomerName": "Demo Customer",
+      "OrderId":  "Z1y3X56",
+      "CarPlate": "12-Y 261",
+      "CarColor": "Orange",
+      "MobileNumber": "3231234567",
+      "CarModel": "Ford Mustang GT"
     })
 
-  
+    checkLocationPermissions()
+    registerBluedotListeners()
+
+  }, [])
+
+
+  const checkLocationPermissions = async () => {
     if (Platform.OS === OS.IOS) {
       const hasLocationAlwaysPermission = await check(PERMISSIONS.IOS.LOCATION_ALWAYS) === RESULTS.GRANTED
       const hasLocationWhileInUsePermission = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE) === RESULTS.GRANTED
       const hasBluetoothPermission = await check(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) === RESULTS.GRANTED
 
       if (hasLocationAlwaysPermission) {
-        this.setState({ locationPermissions: LOCATION_PERMISSIONS.ALWAYS })
+        setLocationPermissions(LOCATION_PERMISSIONS.ALWAYS)
       }
 
       if (hasLocationWhileInUsePermission) {
-        this.setState({ locationPermissions: LOCATION_PERMISSIONS.WHILE_IN_USE })
+        setLocationPermissions(LOCATION_PERMISSIONS.WHILE_IN_USE)
       }
 
       if (hasBluetoothPermission) {
-        this.setState({ bluetoothPermission: RESULTS.GRANTED })
+        setBluetoothPermission(RESULTS.GRANTED)
       }
     }
+  }
 
+  const registerBluedotListeners = () => {
     BluedotPointSdk.on('zoneInfoUpdate', (event) => {
       const eventData = `There are ${event.zoneInfos.length} zones`
-      this.setState({ eventName: 'zoneInfoUpdate', eventData })
+      setEventName('zoneInfoUpdate')
+      setEventData(eventData)
     })
 
     BluedotPointSdk.on('checkedIntoFence', (event) => {
       const message = `You have checked in ${event.zoneInfo.name}`
-  
       sendLocalNotification(message)
-
-      this.setState({ eventName: 'checkedIntoFence', eventData: message })
+      setEventName('checkedIntoFence')
+      setEventData(message)
+      setCallbackCounter(prev => prev + 1)
     })
 
     BluedotPointSdk.on('checkedOutFromFence', (event) => {
       const message = `You have checked out from ${event.zoneInfo.name}`
-
       sendLocalNotification(message)
-
-      this.setState({ eventName: 'checkedOutFromFence', eventData: message })
+      setEventName('checkedOutFromFence')
+      setEventData(message)
     })
 
     BluedotPointSdk.on('checkedIntoBeacon', (event) => {
       const message = `You have checked in ${event.zoneInfo.name}`
-
       sendLocalNotification(message)
-
-      this.setState({ eventName: 'checkedIntoBeacon', eventData: message })
+      setEventName('checkedIntoBeacon')
+      setEventData(message)
     })
 
     BluedotPointSdk.on('checkedOutFromBeacon', (event) => {
       const message = `You have checked out from ${event.zoneInfo.name}`
-
       sendLocalNotification(message)
-
-      this.setState({ eventName: 'checkedOutFromBeacon', eventData })
+      setEventName('checkedOutFromBeacon')
+      setEventData(message)
     })
 
     BluedotPointSdk.on('startRequiringUserInterventionForBluetooth', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'startRequiringUserInterventionForBluetooth', eventData })
+      setEventName('startRequiringUserInterventionForBluetooth')
+      setEventData(eventData)
     })
 
     BluedotPointSdk.on('stopRequiringUserInterventionForBluetooth', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'stopRequiringUserInterventionForBluetooth', eventData })
+      setEventName('stopRequiringUserInterventionForBluetooth')
+      setEventData(eventData)
     })
 
     BluedotPointSdk.on('startRequiringUserInterventionForLocationServices', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'startRequiringUserInterventionForLocationServices', eventData })
+      setEventName('startRequiringUserInterventionForLocationServices')
+      setEventData(eventData)
     })
 
     BluedotPointSdk.on('stopRequiringUserInterventionForLocationServices', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'stopRequiringUserInterventionForLocationServices', eventData })
+      setEventName('stopRequiringUserInterventionForLocationServices')
+      setEventData(eventData)
     })
     
     // Tempo Events
     BluedotPointSdk.on('tempoStarted', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'tempoStarted', eventData, hasTempoStarted: true })
+      setEventName('tempoStarted')
+      setEventData(eventData)
+      setHasTempoStarted(true)
     })
 
     BluedotPointSdk.on('tempoStopped', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'tempoStopped', eventData, hasTempoStarted: false })
+      setEventName('tempoStopped')
+      setEventData(eventData)
+      setHasTempoStarted(false)
     })
 
     BluedotPointSdk.on('tempoStartError', (event) => {
       const eventData = JSON.stringify(event)
-      this.setState({ eventName: 'tempoStartError', eventData, hasTempoStarted: false })
+      setEventName('tempoStartError')
+      setEventData(eventData)
+      setHasTempoStarted(false)
     })
   }
 
-  handlePress = () => {
-    if (!this.state.isAuthenticated) {
-      this.handleAuthenticate();
-    }
-    else {
-      this.handleLogout();
-    }
+  const handlePress = () => {
+    isAuthenticated ? handleLogout() : handleAuthenticate()
   }
 
-  handleAuthenticate = () => {
-    const onSuccess = () => {
-      this.setState({
-        isAuthenticated : true,
-      });
+  const handleAuthenticate = () => {
+    const onSuccess = () => { 
+      setIsAuthenticated(true) 
     }
 
     const onFail = () => {
-      this.setState({
-        isAuthenticated : false,
-        eventData: '---   AUTHENTICATION FAILED    ---',
-      });
+      setIsAuthenticated(true)
+      setEventData('---   AUTHENTICATION FAILED    ---')
     }
 
-    BluedotPointSdk.authenticate(PROJECTID, this.state.locationPermissions, onSuccess, onFail)
+    BluedotPointSdk.authenticate(PROJECTID, locationPermissions, onSuccess, onFail)
   }
 
   handleLogout = () => {
     const onSuccess = () => {
-      this.setState({
-        isAuthenticated: false,
-        eventName: '',
-        eventData: ''
-      });
+      setIsAuthenticated(false)
+      setEventName('')
+      setEventData('')
     }
 
     const onFail = () => {
-      this.setState({
-        eventData: 'Fail logging out',
-      });
+      setEventData('Fail logging out')
     }
 
     BluedotPointSdk.logOut(onSuccess, onFail);
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Bluedot Point SDK</Text>
-          <Text style={styles.title}>React Native</Text>
-        </View>
-
-        <View style={styles.eventContainer}>
-          <View style={styles.eventNameContainer}>
-            <Text style={styles.eventTitle}>EVENT</Text>
-            <Text style={styles.eventName}>{this.state.eventName}</Text>
-          </View>
-
-          <View style={styles.eventDataContainer}>
-            <Text style={styles.eventTitle}>EVENT DATA</Text>
-            <Text>{this.state.eventData}</Text>
-          </View>
-        </View>
-
-        <Button title={ this.state.isAuthenticated ? 'Logout' : 'Authenticate' } onPress={this.handlePress} />
-
-        { 
-          this.state.isAuthenticated && (
-            <Tempo hasStarted={this.state.hasTempoStarted} />
-          )
-        }      
+  
+  return (
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Bluedot Point SDK</Text>
+        <Text style={styles.title}>React Native</Text>
       </View>
-    );
-  }
+
+      {
+        installRef && (
+          <View style={styles.titleContainer}>
+            <Text style={styles.eventTitle}>Install Reference</Text>
+            <Text style={styles.eventTitle}>{installRef}</Text>
+          </View>
+        )
+      }
+  
+      <View style={styles.eventContainer}>
+        <View style={styles.eventNameContainer}>
+          <Text style={styles.eventTitle}>EVENT</Text>
+          <Text style={styles.eventName}>{eventName}</Text>
+        </View>
+
+        <View style={styles.eventDataContainer}>
+          <Text style={styles.eventTitle}>EVENT DATA</Text>
+          <Text>{eventData}</Text>
+        </View>
+      </View>
+
+      <View>
+        <Text>Callback counter: {callbackCounter}</Text>
+      </View>
+
+      <Button title={ isAuthenticated ? 'Logout' : 'Authenticate' } onPress={handlePress} />
+
+      { 
+        isAuthenticated && (
+          <Tempo hasStarted={hasTempoStarted} />
+        )
+      }      
+    </View>
+  );
+  
 }

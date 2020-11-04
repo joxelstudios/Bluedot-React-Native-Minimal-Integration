@@ -9,15 +9,19 @@ const styles = StyleSheet.create({
     },
     titleContainer: {
         alignItems: 'center',
-        marginBottom: 80
+        marginBottom: 60
     },
     title: {
         fontWeight: '800',
         fontSize: 18
     },
+    installRefContainer: {
+        alignItems: 'center',
+        marginBottom: 20
+    },
     eventContainer: {
         alignItems: 'center',
-        marginBottom: 80
+        marginBottom: 60
     },
     eventTitle: {
         fontSize: 14,

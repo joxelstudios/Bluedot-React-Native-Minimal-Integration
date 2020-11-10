@@ -19,10 +19,6 @@ export default function App () {
   const [ hasTempoStarted, setHasTempoStarted ] = useState(false)
   const [ installRef, setInstallRef ] = useState(null)
 
-  // TEMPORARY
-  const [ callbackCounter, setCallbackCounter ] = useState(0)
-
-
   React.useEffect(() => {
     // Ask location permission 
     requestLocationPermissions();
@@ -40,12 +36,7 @@ export default function App () {
     
     // Set custom event metadata
     BluedotPointSdk.setCustomEventMetaData({
-      "CustomerName": "Demo Customer",
-      "OrderId":  "Z1y3X56",
-      "CarPlate": "12-Y 261",
-      "CarColor": "Orange",
-      "MobileNumber": "3231234567",
-      "CarModel": "Ford Mustang GT"
+      "CustomerName": "Demo Customer"
     })
 
     checkLocationPermissions()
@@ -86,7 +77,6 @@ export default function App () {
       sendLocalNotification(message)
       setEventName('checkedIntoFence')
       setEventData(message)
-      setCallbackCounter(prev => prev + 1)
     })
 
     BluedotPointSdk.on('checkedOutFromFence', (event) => {
@@ -167,7 +157,7 @@ export default function App () {
     }
 
     const onFail = () => {
-      setIsAuthenticated(true)
+      setIsAuthenticated(false)
       setEventData('---   AUTHENTICATION FAILED    ---')
     }
 

@@ -7,9 +7,10 @@ export const sendLocalNotification = (message) => {
     const title = 'BluedotPointSdk'
 
     if (Platform.OS === OS.IOS) {
-        PushNotificationIOS.presentLocalNotification({
-            alertTitle: title,
-            alertBody: message,
+        PushNotificationIOS.addNotificationRequest({
+            id: "notification",
+            title,
+            body: message,
             isSilent: true
         })
     }

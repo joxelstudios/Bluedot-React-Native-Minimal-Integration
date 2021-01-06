@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderColor: "gray",
         borderWidth: 1,
-        padding: 2,
+        padding: 5,
         marginBottom: 20
     },
     tempoWrapper: {

@@ -1,5 +1,5 @@
 PODS:
-  - BluedotPointSDK (15.3.2)
+  - BluedotPointSDK (15.4.0)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EXAppLoaderProvider (8.0.0)
@@ -243,7 +243,7 @@ PODS:
   - React-jsinspector (0.61.2)
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-plugin (1.1.4-beta-1):
+  - react-native-plugin (1.1.6):
     - BluedotPointSDK
     - React
   - React-RCTActionSheet (0.61.2):
@@ -553,7 +553,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BluedotPointSDK: 3b708989211466444617af5a59d48a4fdc6acff5
+  BluedotPointSDK: 2704d17e9e4765b6039b181d02de7f6f795461ad
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EXAppLoaderProvider: f6aeb45ee81887811b34eee5c5f235a6111d58d0
@@ -596,7 +596,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-geolocation: cbd9d6bd06bac411eed2671810f454d4908484a8
-  react-native-plugin: 719e959323d60845faa9a5714566fb1f44cb2b2e
+  react-native-plugin: 03028b66aae7f6d78c66224a28e3961567319174
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e

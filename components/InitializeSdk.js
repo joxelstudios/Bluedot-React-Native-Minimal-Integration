@@ -1,40 +1,152 @@
-import React, { useState } from "react";
-import BluedotPointSdk from 'bluedot-react-native'
-import { useHistory } from 'react-router'
-import { Button, Text, TextInput, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import BluedotPointSdk from "@bluedot-innovation/bluedot-react-native";
+import { useHistory } from "react-router";
+import { Button, Platform, Text, TextInput, View } from "react-native";
+import { check, PERMISSIONS, RESULTS } from "react-native-permissions";
+import { sendLocalNotification } from "../helpers/notifications";
+import { OS, LOCATION_PERMISSIONS } from "../enums";
+import styles from "../styles";
+
+const PROJECTID = "4269e393-0870-4d37-a4d0-574f7ef8fe2f";
 
 export default function Initialize() {
-  const [projectId, setProjectId] = useState("4269e393-0870-4d37-a4d0-574f7ef8fe2f");
-  const [error, setError] = useState(null)
-  const history = useHistory()
+  const [projectId, setProjectId] = useState(PROJECTID);
+  const [error, setError] = useState(null);
+  const [locationPermissions, setLocationPermissions] = useState("");
+  const history = useHistory();
+
+  useEffect(() => {
+    BluedotPointSdk.isInitialized().then((isInitialized) => {
+      if (isInitialized) history.push("/main");
+    });
+
+    checkLocationPermissions();
+    registerBluedotListeners();
+
+    // Set Foreground Notification in Android (iOS will ignore this)
+    const channelId = "Bluedot React";
+    const channelName = "Bluedot React";
+    const title = "Bluedot Foreground Service";
+    const content =
+      "This app is running a foreground service using location services";
+
+    BluedotPointSdk.setForegroundNotification(
+      channelId,
+      channelName,
+      title,
+      content,
+      true
+    );
+
+    // Set custom event metadata.
+    // We suggest to set the Custom Event Meta Data before starting GeoTriggering or Tempo.
+    BluedotPointSdk.setCustomEventMetaData({
+      orderId: "order_1234",
+      storeId: "store_5678",
+      carModel: "ford",
+      carColor: "blue",
+    });
+  }, []);
+
+  const checkLocationPermissions = async () => {
+    if (Platform.OS === OS.IOS) {
+      const hasLocationAlwaysPermission =
+        (await check(PERMISSIONS.IOS.LOCATION_ALWAYS)) === RESULTS.GRANTED;
+      const hasLocationWhileInUsePermission =
+        (await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)) === RESULTS.GRANTED;
+
+      if (hasLocationAlwaysPermission) {
+        setLocationPermissions(LOCATION_PERMISSIONS.ALWAYS);
+      }
+
+      if (hasLocationWhileInUsePermission) {
+        setLocationPermissions(LOCATION_PERMISSIONS.WHILE_IN_USE);
+      }
+    }
+  };
+
+  const registerBluedotListeners = () => {
+    // NEW EVENTS
+    BluedotPointSdk.on("enterZone", (event) => {
+      const message = `You have checked in ${event.zoneInfo.name}`;
+      sendLocalNotification(message);
+    });
+
+    BluedotPointSdk.on("zoneInfoUpdate", (event) => {});
+
+    // DEPRECATED EVENTS
+    BluedotPointSdk.on("checkedIntoFence", (event) => {
+      const message = `You have checked in ${event.zoneInfo.name}`;
+      sendLocalNotification(message);
+    });
+
+    BluedotPointSdk.on("checkedOutFromFence", (event) => {
+      const message = `You have checked out from ${event.zoneInfo.name}`;
+      sendLocalNotification(message);
+    });
+
+    BluedotPointSdk.on("checkedIntoBeacon", (event) => {
+      const message = `You have checked in ${event.zoneInfo.name}`;
+      sendLocalNotification(message);
+    });
+
+    BluedotPointSdk.on("checkedOutFromBeacon", (event) => {
+      const message = `You have checked out from ${event.zoneInfo.name}`;
+      sendLocalNotification(message);
+    });
+
+    BluedotPointSdk.on(
+      "startRequiringUserInterventionForLocationServices",
+      (event) => {
+        const eventData = JSON.stringify(event);
+      }
+    );
+
+    BluedotPointSdk.on(
+      "stopRequiringUserInterventionForLocationServices",
+      (event) => {
+        const eventData = JSON.stringify(event);
+      }
+    );
+
+    // Tempo Events
+    BluedotPointSdk.on("tempoStarted", (event) => {});
+
+    BluedotPointSdk.on("tempoStopped", (event) => {});
+
+    BluedotPointSdk.on("tempoStartError", (event) => {});
+  };
 
   function handleInitializeSDK() {
     function onSuccess() {
-        history.push('/main')
+      history.push("/main");
     }
 
     function onFail(error) {
-        setError(error)
+      setError(error);
     }
 
-    BluedotPointSdk.initialize(projectId, onSuccess, onFail)
+    BluedotPointSdk.initialize(projectId, onSuccess, onFail);
   }
 
   return (
-    <View style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}>
-      <Text>Project ID</Text>
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Bluedot React Native</Text>
+      </View>
+
+      <Text style={styles.eventTitle}>Project ID</Text>
       <TextInput
+        style={styles.textInput}
         onChangeText={setProjectId}
         value={projectId}
         placeholder="Use your project Id here"
       />
 
-      { error !== null && (
-          <Text>Error authenticating {error}</Text>
-      )}
+      {error !== null && <Text>Error authenticating {error}</Text>}
 
-      <Button 
-        title="Initialize the SDK"
+      <Button
+        title="Initialize"
         onPress={handleInitializeSDK}
         disabled={Boolean(!projectId)}
       />

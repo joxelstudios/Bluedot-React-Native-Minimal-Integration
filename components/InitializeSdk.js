@@ -23,21 +23,6 @@ export default function Initialize() {
     checkLocationPermissions();
     registerBluedotListeners();
 
-    // Set Foreground Notification in Android (iOS will ignore this)
-    const channelId = "Bluedot React";
-    const channelName = "Bluedot React";
-    const title = "Bluedot Foreground Service";
-    const content =
-      "This app is running a foreground service using location services";
-
-    BluedotPointSdk.setForegroundNotification(
-      channelId,
-      channelName,
-      title,
-      content,
-      true
-    );
-
     // Set custom event metadata.
     // We suggest to set the Custom Event Meta Data before starting GeoTriggering or Tempo.
     BluedotPointSdk.setCustomEventMetaData({
@@ -68,19 +53,16 @@ export default function Initialize() {
   const registerBluedotListeners = () => {
     // NEW EVENTS
     BluedotPointSdk.on("enterZone", (event) => {
-      console.log("ENTERED ZONE")
       const message = `You have checked in ${event.zoneInfo.name}`;
       sendLocalNotification(message);
     });
 
-    BluedotPointSdk.on("Zone", (event) => {
-      console.log("ENTERED ZONE")
+    BluedotPointSdk.on("exitZone", (event) => {
       const message = `You have checked in ${event.zoneInfo.name}`;
       sendLocalNotification(message);
     });
 
     BluedotPointSdk.on("zoneInfoUpdate", () => {
-      console.log("zoneInfoUpdate!!")
       BluedotPointSdk.getZonesAndFences().then(console.log);
     });
 

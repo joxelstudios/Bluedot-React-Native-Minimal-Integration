@@ -34,7 +34,6 @@ export default function GeoTriggering() {
           "To get best experience with your order please re-open the app",
           "Press here to re-open the app"
         )
-        .androidNotification("Minimal Integration", "We're using location services")
         .start(onSuccess,onFail);
     }
   };

@@ -6,8 +6,9 @@ import styles from "../styles";
 
 export default function Tempo({ hasStarted }) {
   const [destinationId, setDestinationId] = useState("");
-  const [isTempoRunning, setIsTempoRunning] = useState(false)
-  const history = useHistory()
+  const [isTempoRunning, setIsTempoRunning] = useState(false);
+  const history = useHistory();
+  const tempoBuilder = new BluedotPointSdk.TempoBuilder();
 
   useEffect(() => {
     BluedotPointSdk.isTempoRunning().then(setIsTempoRunning)
@@ -23,7 +24,7 @@ export default function Tempo({ hasStarted }) {
         console.error('Error starting Tempo: ', error);
       }
 
-      BluedotPointSdk.startTempoTrackingWithCallbacks(
+      tempoBuilder.start(
         destinationId.trim(),
         onStartTempoSuccess,
         onStartTempoFailed

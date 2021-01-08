@@ -68,21 +68,20 @@ export default function Initialize() {
   const registerBluedotListeners = () => {
     // NEW EVENTS
     BluedotPointSdk.on("enterZone", (event) => {
+      console.log("ENTERED ZONE")
       const message = `You have checked in ${event.zoneInfo.name}`;
       sendLocalNotification(message);
     });
 
-    BluedotPointSdk.on("zoneInfoUpdate", (event) => {});
-
-    // DEPRECATED EVENTS
-    BluedotPointSdk.on("checkedIntoFence", (event) => {
+    BluedotPointSdk.on("Zone", (event) => {
+      console.log("ENTERED ZONE")
       const message = `You have checked in ${event.zoneInfo.name}`;
       sendLocalNotification(message);
     });
 
-    BluedotPointSdk.on("checkedOutFromFence", (event) => {
-      const message = `You have checked out from ${event.zoneInfo.name}`;
-      sendLocalNotification(message);
+    BluedotPointSdk.on("zoneInfoUpdate", () => {
+      console.log("zoneInfoUpdate!!")
+      BluedotPointSdk.getZonesAndFences().then(console.log);
     });
 
     BluedotPointSdk.on("checkedIntoBeacon", (event) => {
@@ -96,25 +95,30 @@ export default function Initialize() {
     });
 
     BluedotPointSdk.on(
-      "startRequiringUserInterventionForLocationServices",
-      (event) => {
-        const eventData = JSON.stringify(event);
-      }
+      "lowPowerModeDidChange",
+      (event) => console.log(JSON.stringify(event))
     );
 
     BluedotPointSdk.on(
-      "stopRequiringUserInterventionForLocationServices",
-      (event) => {
-        const eventData = JSON.stringify(event);
-      }
+      "locationAuthorizationDidChange",
+      (event) => console.log(JSON.stringify(event))
     );
 
-    // Tempo Events
-    BluedotPointSdk.on("tempoStarted", (event) => {});
+    BluedotPointSdk.on(
+      // This event is exclusive for iOS Location Accuracy (Precise: on/off)
+      "accuracyAuthorizationDidChange",
+      (event) => console.log(JSON.stringify(event))
+    );
 
-    BluedotPointSdk.on("tempoStopped", (event) => {});
+    BluedotPointSdk.on(
+      "startRequiringUserInterventionForBluetooth",
+      (event) => console.log(JSON.stringify(event))
+    )
 
-    BluedotPointSdk.on("tempoStartError", (event) => {});
+    BluedotPointSdk.on(
+      "startRequiringUserInterventionForBluetooth",
+      (event) => console.log(JSON.stringify(event))
+    )
   };
 
   function handleInitializeSDK() {

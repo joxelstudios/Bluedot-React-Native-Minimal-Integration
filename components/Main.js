@@ -13,7 +13,6 @@ export default function Main() {
     // Get device's Install Reference
     BluedotPointSdk.getInstallRef().then((instRef) => setInstallRef(instRef));
     BluedotPointSdk.getSdkVersion().then((version) => setSdkVersion(version));
-    BluedotPointSdk.getZonesAndFences().then(console.log);
   }, []);
 
   const handleResetSdk = () => {

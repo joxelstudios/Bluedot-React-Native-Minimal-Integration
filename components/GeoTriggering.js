@@ -8,28 +8,37 @@ export default function GeoTriggering() {
   const history = useHistory();
   const [isGeotriggeringRunning, setIsGeotriggeringRunning] = useState(false);
   const [error, setError] = useState(null);
-  const [zoneInfo, setZoneInfo] = useState([]);
   
-  const geoTriggeringBuilder = new BluedotPointSdk.GeotriggeringBuilder()
+  const geoTriggeringBuilder = new BluedotPointSdk.GeoTriggeringBuilder();
 
   useEffect(() => {
-    BluedotPointSdk.isGeotriggeringRunning().then(setIsGeotriggeringRunning);
-    BluedotPointSdk.on("zoneInfoUpdate", () => {
-      BluedotPointSdk.getZonesAndFences().then(setZoneInfo);
-    });
+    BluedotPointSdk.isGeoTriggeringRunning().then(setIsGeotriggeringRunning);
   }, []);
 
   const handleStartStopGeotriggering = () => {
     const onSuccess = () => {
-        BluedotPointSdk.isGeotriggeringRunning().then(setIsGeotriggeringRunning);
+        BluedotPointSdk.isGeoTriggeringRunning().then(setIsGeotriggeringRunning);
     }
 
     const onFail = (error) => setError(error);
 
     if (isGeotriggeringRunning) {
-      BluedotPointSdk.stopGeotriggering(onSuccess, onFail);
+      BluedotPointSdk.stopGeoTriggering(onSuccess, onFail);
     } else {
+      const androidNotificationParams = {
+        channelId: 'Bluedot React',
+        channelName: 'Bluedot React',
+        title: 'Bluedot Foreground Service - Tempo',
+        content: "This app is running a foreground service using location services"
+      }
+
       geoTriggeringBuilder
+        .androidNotification(
+          androidNotificationParams.channelId,
+          androidNotificationParams.channelName,
+          androidNotificationParams.title,
+          androidNotificationParams.content
+        )
         .iOSAppRestartNotification(
           "To get best experience with your order please re-open the app",
           "Press here to re-open the app"
@@ -47,10 +56,6 @@ export default function GeoTriggering() {
         onPress={handleStartStopGeotriggering}
       />
       <Button title="Back" onPress={() => history.push("/main")} />
-
-      <View>
-        {zoneInfo.length ? <Text>{JSON.stringify(zoneInfo)}</Text> : null}
-      </View>
     </View>
   );
 }

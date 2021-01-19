@@ -24,11 +24,25 @@ export default function Tempo({ hasStarted }) {
         console.error('Error starting Tempo: ', error);
       }
 
-      tempoBuilder.start(
-        destinationId.trim(),
-        onStartTempoSuccess,
-        onStartTempoFailed
-      )
+      const androidNotificationParams = {
+        channelId: 'Bluedot React',
+        channelName: 'Bluedot React',
+        title: 'Bluedot Foreground Service - Tempo',
+        content: "This app is running a foreground service using location services"
+      }
+
+      tempoBuilder
+        .androidNotification( // Required to run Tempo in Android
+          androidNotificationParams.channelId,
+          androidNotificationParams.channelName,
+          androidNotificationParams.title,
+          androidNotificationParams.content
+        )
+        .start(
+          destinationId.trim(),
+          onStartTempoSuccess,
+          onStartTempoFailed
+        )
   }
 
   function handleStopTempo() {
@@ -41,7 +55,7 @@ export default function Tempo({ hasStarted }) {
         console.error('Error Stopping Tempo: ', error);
       }
 
-      BluedotPointSdk.stopTempoTrackingWithCallbacks(
+      BluedotPointSdk.stopTempoTracking(
         onStopTempoSuccess,
         onStopTempoFailed
       )

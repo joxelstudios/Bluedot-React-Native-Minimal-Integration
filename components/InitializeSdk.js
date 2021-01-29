@@ -7,7 +7,7 @@ import { sendLocalNotification } from "../helpers/notifications";
 import { OS, LOCATION_PERMISSIONS } from "../enums";
 import styles from "../styles";
 
-const PROJECTID = "4269e393-0870-4d37-a4d0-574f7ef8fe2f";
+const PROJECTID = "755a32cf-00fd-4b85-8787-ce177b93d8a0";
 
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);
@@ -30,6 +30,7 @@ export default function Initialize() {
       storeId: "store_5678",
       carModel: "ford",
       carColor: "blue",
+      mparticle_other: "daniel@bluedot.io"
     });
   }, []);
 

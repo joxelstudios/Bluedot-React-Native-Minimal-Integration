@@ -16,6 +16,7 @@ export default function GeoTriggering() {
   }, []);
 
   const handleStartStopGeotriggering = () => {
+
     const onSuccess = () => {
         BluedotPointSdk.isGeoTriggeringRunning().then(setIsGeotriggeringRunning);
     }
@@ -29,7 +30,8 @@ export default function GeoTriggering() {
         channelId: 'Bluedot React',
         channelName: 'Bluedot React',
         title: 'Bluedot Foreground Service - Tempo',
-        content: "This app is running a foreground service using location services"
+        content: "This app is running a foreground service using location services",
+        notificationId: 123
       }
 
       geoTriggeringBuilder
@@ -37,12 +39,13 @@ export default function GeoTriggering() {
           androidNotificationParams.channelId,
           androidNotificationParams.channelName,
           androidNotificationParams.title,
-          androidNotificationParams.content
+          androidNotificationParams.content,
+          // androidNotificationParams.notificationId
         )
-        .iOSAppRestartNotification(
-          "To get best experience with your order please re-open the app",
-          "Press here to re-open the app"
-        )
+        // .iOSAppRestartNotification(
+        //   "To get best experience with your order please re-open the app",
+        //   "Press here to re-open the app"
+        // )
         .start(onSuccess,onFail);
     }
   };

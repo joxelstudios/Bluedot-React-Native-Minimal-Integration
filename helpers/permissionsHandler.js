@@ -1,24 +1,32 @@
-import { Platform, PermissionsAndroid } from 'react-native';
-import {request, PERMISSIONS} from 'react-native-permissions';
-import Geolocation from '@react-native-community/geolocation';
-import { OS } from '../enums'
+import { Platform } from "react-native";
+import { request, checkMultiple, requestMultiple, PERMISSIONS } from "react-native-permissions";
+import Geolocation from "@react-native-community/geolocation";
+import { OS } from "../enums";
 
 export const requestLocationPermissions = async () => {
-    if (Platform.OS === OS.ANDROID) {
-        const hasLocationPermissions = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+  if (Platform.OS === OS.ANDROID) {
+    const currentPermissions = await checkMultiple([
+        PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
+    ])
 
-        if (!hasLocationPermissions) {
-            await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-        };
-    }
+    const hasLocationPermissions = currentPermissions["android.permission.ACCESS_BACKGROUND_LOCATION"] === 'granted' && currentPermissions["android.permission.ACCESS_FINE_LOCATION"] === 'granted'
 
-    if (Platform.OS === OS.IOS) {
-        Geolocation.requestAuthorization()
+    if (!hasLocationPermissions) {
+        requestMultiple([
+            PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+            PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
+        ])
     }
+  }
+
+  if (Platform.OS === OS.IOS) {
+    Geolocation.requestAuthorization();
+  }
 };
 
 export const requestBluetoothPermissions = async () => {
-    if (Platform.OS === OS.IOS) {
-        await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL)
-    }
-}
+  if (Platform.OS === OS.IOS) {
+    await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
+  }
+};

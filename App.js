@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NativeRouter, Route, Switch } from "react-router-native";
 import {
   requestLocationPermissions,

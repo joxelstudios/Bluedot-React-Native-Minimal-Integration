@@ -1,5 +1,5 @@
 PODS:
-  - BluedotPointSDK (15.4.0)
+  - BluedotPointSDK (15.4.1)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EXAppLoaderProvider (8.0.0)
@@ -243,7 +243,7 @@ PODS:
   - React-jsinspector (0.61.2)
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-plugin (1.1.7-beta.0):
+  - react-native-plugin (2.0.0-beta.1):
     - BluedotPointSDK
     - React
   - React-RCTActionSheet (0.61.2):
@@ -287,7 +287,7 @@ PODS:
     - React
   - RNPermissions (2.2.2):
     - React-Core
-  - RNReanimated (1.3.2):
+  - RNReanimated (1.4.0):
     - React
   - RNScreens (1.0.0-alpha.23):
     - React
@@ -553,7 +553,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BluedotPointSDK: 2704d17e9e4765b6039b181d02de7f6f795461ad
+  BluedotPointSDK: e6afdbe1c4a01d867d6533e1a84c9d03f213cba2
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   EXAppLoaderProvider: f6aeb45ee81887811b34eee5c5f235a6111d58d0
@@ -596,7 +596,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-geolocation: cbd9d6bd06bac411eed2671810f454d4908484a8
-  react-native-plugin: 4276e5db9222d5eaeae1fc1b499be163ad7cae5a
+  react-native-plugin: 1c5f665970e25118213593efbee5e55eff8b6ad7
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e
@@ -610,7 +610,7 @@ SPEC CHECKSUMS:
   RNCPushNotificationIOS: eaf01f848a0b872b194d31bcad94bb864299e01e
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNPermissions: 067727df624665d4a6c8e2cffcc172ba608b96ed
-  RNReanimated: 5d148a7f55ebf47055ea55f51f5dc7a827dc9547
+  RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
   UMBarCodeScannerInterface: 550e7ffd7a789289260bde3d547be29407e75437
   UMCameraInterface: 51e4568d64e77615557afaad9a3acdaad5d32d9f

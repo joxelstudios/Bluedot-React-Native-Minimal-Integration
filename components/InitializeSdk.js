@@ -7,7 +7,7 @@ import { sendLocalNotification } from "../helpers/notifications";
 import { OS, LOCATION_PERMISSIONS } from "../enums";
 import styles from "../styles";
 
-const PROJECTID = "755a32cf-00fd-4b85-8787-ce177b93d8a0";
+const PROJECTID = "4269e393-0870-4d37-a4d0-574f7ef8fe2f";
 
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);
@@ -15,14 +15,12 @@ export default function Initialize() {
   const [locationPermissions, setLocationPermissions] = useState("");
   const history = useHistory();
 
+
   useEffect(() => {
     BluedotPointSdk.isInitialized().then((isInitialized) => {
       if (isInitialized) history.push("/main");
     });
-
-    checkLocationPermissions();
-    registerBluedotListeners();
-
+    
     // Set custom event metadata.
     // We suggest to set the Custom Event Meta Data before starting GeoTriggering or Tempo.
     BluedotPointSdk.setCustomEventMetaData({
@@ -106,6 +104,7 @@ export default function Initialize() {
 
   function handleInitializeSDK() {
     function onSuccess() {
+      registerBluedotListeners();
       history.push("/main");
     }
 

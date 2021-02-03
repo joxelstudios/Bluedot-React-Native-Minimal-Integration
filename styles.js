@@ -43,9 +43,7 @@ const styles = StyleSheet.create({
         maxWidth: 320
     },
     button: {
-        width: 200,
-        height: 50,
-        backgroundColor: 'tomato'
+        marginBottom: 10
     },
     textInput: {
         height: 40,

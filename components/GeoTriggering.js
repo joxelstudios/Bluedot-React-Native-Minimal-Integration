@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Platform, Text, View } from "react-native";
 import { useHistory } from "react-router-native";
 import BluedotPointSdk from "@bluedot-innovation/bluedot-react-native";
 import styles from "../styles";
@@ -7,58 +7,101 @@ import styles from "../styles";
 export default function GeoTriggering() {
   const history = useHistory();
   const [isGeotriggeringRunning, setIsGeotriggeringRunning] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const geoTriggeringBuilder = new BluedotPointSdk.GeoTriggeringBuilder();
 
   useEffect(() => {
-    BluedotPointSdk.isGeoTriggeringRunning().then(setIsGeotriggeringRunning);
+    BluedotPointSdk.isGeoTriggeringRunning().then((isRunning) => {
+      setIsGeotriggeringRunning(isRunning);
+      setIsLoading(false);
+    });
   }, []);
 
-  const handleStartStopGeotriggering = () => {
+  const handleStartGeotriggering = () => {
+    const onSuccessCallback = () => setIsGeotriggeringRunning(true);
+    const onFailCallback = (error) => setError(error);
 
-    const onSuccess = () => {
-        BluedotPointSdk.isGeoTriggeringRunning().then(setIsGeotriggeringRunning);
+    geoTriggeringBuilder.start(onSuccessCallback, onFailCallback);
+  };
+
+  const handleStartGeotriggeringWithAndroidNotification = () => {
+    const onSuccessCallback = () => setIsGeotriggeringRunning(true);
+    const onFailCallback = (error) => setError(error);
+
+    const androidNotificationParams = {
+      channelId: "Bluedot React",
+      channelName: "Bluedot React",
+      title: "Bluedot Foreground Service - Geo-triggering",
+      content:
+        "This app is running a foreground service using location services",
+      notificationId: 123,
+    };
+
+    geoTriggeringBuilder
+      .androidNotification(
+        androidNotificationParams.channelId,
+        androidNotificationParams.channelName,
+        androidNotificationParams.title,
+        androidNotificationParams.content,
+        androidNotificationParams.notificationId
+      )
+      .start(onSuccessCallback, onFailCallback);
+  };
+
+  const handleStopGeotriggering = () => {
+    console.log('STOP SDK 🧼');
+    function onSuccessCallback() {
+      setIsGeotriggeringRunning(false);
+    }
+    function onFailCallback(error) {
+      setError(error);
     }
 
-    const onFail = (error) => setError(error);
+    BluedotPointSdk.stopGeoTriggering(onSuccessCallback, onFailCallback);
+  };
 
-    if (isGeotriggeringRunning) {
-      BluedotPointSdk.stopGeoTriggering(onSuccess, onFail);
-    } else {
-      const androidNotificationParams = {
-        channelId: 'Bluedot React',
-        channelName: 'Bluedot React',
-        title: 'Bluedot Foreground Service - Tempo',
-        content: "This app is running a foreground service using location services",
-        notificationId: 123
-      }
+  const renderStartButtons = () => {
+    return (
+      <>
+        {Platform.OS === "android" && (
+          <Button
+            title={"Start with foreground notification"}
+            onPress={handleStartGeotriggeringWithAndroidNotification}
+            style={styles.button}
+          />
+        )}
 
-      geoTriggeringBuilder
-        .androidNotification(
-          androidNotificationParams.channelId,
-          androidNotificationParams.channelName,
-          androidNotificationParams.title,
-          androidNotificationParams.content,
-          // androidNotificationParams.notificationId
-        )
-        // .iOSAppRestartNotification(
-        //   "To get best experience with your order please re-open the app",
-        //   "Press here to re-open the app"
-        // )
-        .start(onSuccess,onFail);
-    }
+        <Button
+          title={"Start"}
+          onPress={handleStartGeotriggering}
+          style={styles.button}
+        />
+      </>
+    );
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.eventTitle}>Geo Triggering</Text>
       {error ? <Text>Error: {error}</Text> : null}
+      {isGeotriggeringRunning ? (
+        <Button
+          title={"Stop"}
+          onPress={handleStopGeotriggering}
+          style={styles.button}
+        />
+      ) : (
+        renderStartButtons()
+      )}
+
       <Button
-        title={isGeotriggeringRunning ? "Stop" : "Start"}
-        onPress={handleStartStopGeotriggering}
+        title="Back"
+        onPress={() => history.push("/main")}
+        style={styles.button}
       />
-      <Button title="Back" onPress={() => history.push("/main")} />
+
     </View>
   );
 }

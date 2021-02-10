@@ -7,7 +7,6 @@ import styles from "../styles";
 export default function GeoTriggering() {
   const history = useHistory();
   const [isGeotriggeringRunning, setIsGeotriggeringRunning] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const geoTriggeringBuilder = new BluedotPointSdk.GeoTriggeringBuilder();
@@ -15,7 +14,6 @@ export default function GeoTriggering() {
   useEffect(() => {
     BluedotPointSdk.isGeoTriggeringRunning().then((isRunning) => {
       setIsGeotriggeringRunning(isRunning);
-      setIsLoading(false);
     });
   }, []);
 

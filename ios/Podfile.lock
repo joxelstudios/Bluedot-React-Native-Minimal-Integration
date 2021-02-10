@@ -243,7 +243,7 @@ PODS:
   - React-jsinspector (0.61.2)
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-plugin (2.0.0-beta.1):
+  - react-native-plugin (2.0.0-beta.2):
     - BluedotPointSDK
     - React
   - React-RCTActionSheet (0.61.2):
@@ -281,7 +281,7 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
     - ReactCommon/jscallinvoker (= 0.61.2)
-  - RNCPushNotificationIOS (1.7.1):
+  - RNCPushNotificationIOS (1.8.0):
     - React-Core
   - RNGestureHandler (1.4.1):
     - React
@@ -596,7 +596,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-geolocation: cbd9d6bd06bac411eed2671810f454d4908484a8
-  react-native-plugin: 1c5f665970e25118213593efbee5e55eff8b6ad7
+  react-native-plugin: 88bfb5c2a1cf89a43e3c9150d9df0d87047a0124
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e
@@ -607,7 +607,7 @@ SPEC CHECKSUMS:
   React-RCTText: e3ef6191cdb627855ff7fe8fa0c1e14094967fb8
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
-  RNCPushNotificationIOS: eaf01f848a0b872b194d31bcad94bb864299e01e
+  RNCPushNotificationIOS: 5b1cf9ad2aaa107ecb92d5d2d7005ba521b2b97a
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNPermissions: 067727df624665d4a6c8e2cffcc172ba608b96ed
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c

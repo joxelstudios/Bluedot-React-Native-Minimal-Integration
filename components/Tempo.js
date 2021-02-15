@@ -7,6 +7,7 @@ import styles from "../styles";
 export default function Tempo({ hasStarted }) {
   const [destinationId, setDestinationId] = useState("");
   const [isTempoRunning, setIsTempoRunning] = useState(false);
+  const [error, setError] = useState(null);
   const history = useHistory();
   const tempoBuilder = new BluedotPointSdk.TempoBuilder();
 
@@ -16,12 +17,11 @@ export default function Tempo({ hasStarted }) {
 
   function handleStartTempo() {
     function onStartTempoSuccess() {
-        console.log('Tempo has started successfuly')
         BluedotPointSdk.isTempoRunning().then(setIsTempoRunning)
       }
     
       function onStartTempoFailed(error) {
-        console.error('Error starting Tempo: ', error);
+        setError(error)
       }
 
       const androidNotificationParams = {
@@ -79,6 +79,7 @@ export default function Tempo({ hasStarted }) {
             />
           </Fragment>
         )}
+        {error && <Text>{error}</Text>}
         { isTempoRunning ? (
           <Button
             title="Stop Tempo"

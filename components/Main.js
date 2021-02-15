@@ -15,8 +15,52 @@ export default function Main() {
     BluedotPointSdk.getSdkVersion().then((version) => setSdkVersion(version));
   }, []);
 
+  const unsubscribeBluedotListeners = () => {
+    BluedotPointSdk.unsubscribe("enterZone", (event) => {
+      console.log(JSON.stringify(event))
+    });
+
+    BluedotPointSdk.unsubscribe("exitZone", (event) => {
+      console.log(JSON.stringify(event))
+    });
+
+    BluedotPointSdk.unsubscribe("zoneInfoUpdate", () => {
+      console.log()
+    });
+
+    BluedotPointSdk.unsubscribe(
+      "lowPowerModeDidChange",
+      (event) => console.log(JSON.stringify(event))
+    );
+
+    BluedotPointSdk.unsubscribe(
+      "locationAuthorizationDidChange",
+      (event) => console.log(JSON.stringify(event))
+    );
+
+    BluedotPointSdk.unsubscribe(
+      // This event is exclusive for iOS Location Accuracy (Precise: on/off)
+      "accuracyAuthorizationDidChange",
+      (event) => console.log(JSON.stringify(event))
+    );
+
+    BluedotPointSdk.unsubscribe(
+      "startRequiringUserInterventionForBluetooth",
+      (event) => console.log(JSON.stringify(event))
+    )
+
+    BluedotPointSdk.unsubscribe(
+      "startRequiringUserInterventionForBluetooth",
+      (event) => console.log(JSON.stringify(event))
+    )
+  };
+
   const handleResetSdk = () => {
-    const onSuccess = () => history.push('/')
+    const onSuccess = () => {
+      unsubscribeBluedotListeners()
+      history.push('/');
+    }
+
     const onFail = (error) => console.error('Error', error)
     
     BluedotPointSdk.reset(onSuccess, onFail)

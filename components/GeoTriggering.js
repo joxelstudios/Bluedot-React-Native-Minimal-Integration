@@ -18,10 +18,12 @@ export default function GeoTriggering() {
   }, []);
 
   const handleStartGeotriggering = () => {
-    const onSuccessCallback = () => setIsGeotriggeringRunning(true);
+    const onSuccessCallback = () => setIsGeotriggeringRunning(true)
     const onFailCallback = (error) => setError(error);
 
-    geoTriggeringBuilder.start(onSuccessCallback, onFailCallback);
+    geoTriggeringBuilder
+    .iOSAppRestartNotification("Press here to restart the app", "Press here to restart the app")
+    .start(onSuccessCallback, onFailCallback);
   };
 
   const handleStartGeotriggeringWithAndroidNotification = () => {
@@ -49,7 +51,6 @@ export default function GeoTriggering() {
   };
 
   const handleStopGeotriggering = () => {
-    console.log('STOP SDK 🧼');
     function onSuccessCallback() {
       setIsGeotriggeringRunning(false);
     }

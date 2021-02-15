@@ -12,13 +12,13 @@ const PROJECTID = "4269e393-0870-4d37-a4d0-574f7ef8fe2f";
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);
   const [error, setError] = useState(null);
-  const [locationPermissions, setLocationPermissions] = useState("");
   const history = useHistory();
+  const [isSdkInitialized, setIsSdkInitialized] = useState(false);
 
 
   useEffect(() => {
     BluedotPointSdk.isInitialized().then((isInitialized) => {
-      if (isInitialized) history.push("/main");
+      if (isInitialized) setIsSdkInitialized(true)
     });
     
     // Set custom event metadata.
@@ -32,47 +32,23 @@ export default function Initialize() {
     });
   }, []);
 
-  const checkLocationPermissions = async () => {
-    if (Platform.OS === OS.IOS) {
-      const hasLocationAlwaysPermission =
-        (await check(PERMISSIONS.IOS.LOCATION_ALWAYS)) === RESULTS.GRANTED;
-      const hasLocationWhileInUsePermission =
-        (await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)) === RESULTS.GRANTED;
-
-      if (hasLocationAlwaysPermission) {
-        setLocationPermissions(LOCATION_PERMISSIONS.ALWAYS);
-      }
-
-      if (hasLocationWhileInUsePermission) {
-        setLocationPermissions(LOCATION_PERMISSIONS.WHILE_IN_USE);
-      }
-    }
-  };
+  useEffect(() => {
+    if (isSdkInitialized) history.push("/main");
+  }, [isSdkInitialized])
 
   const registerBluedotListeners = () => {
-    // NEW EVENTS
     BluedotPointSdk.on("enterZone", (event) => {
       const message = `You have checked in ${event.zoneInfo.name}`;
       sendLocalNotification(message);
     });
 
     BluedotPointSdk.on("exitZone", (event) => {
-      const message = `You have checked in ${event.zoneInfo.name}`;
+      const message = `You have checked-out from ${event.zoneInfo.name}`;
       sendLocalNotification(message);
     });
 
     BluedotPointSdk.on("zoneInfoUpdate", () => {
-      BluedotPointSdk.getZonesAndFences().then(console.log);
-    });
-
-    BluedotPointSdk.on("checkedIntoBeacon", (event) => {
-      const message = `You have checked in ${event.zoneInfo.name}`;
-      sendLocalNotification(message);
-    });
-
-    BluedotPointSdk.on("checkedOutFromBeacon", (event) => {
-      const message = `You have checked out from ${event.zoneInfo.name}`;
-      sendLocalNotification(message);
+      BluedotPointSdk.getZonesAndFences()
     });
 
     BluedotPointSdk.on(
@@ -90,16 +66,6 @@ export default function Initialize() {
       "accuracyAuthorizationDidChange",
       (event) => console.log(JSON.stringify(event))
     );
-
-    BluedotPointSdk.on(
-      "startRequiringUserInterventionForBluetooth",
-      (event) => console.log(JSON.stringify(event))
-    )
-
-    BluedotPointSdk.on(
-      "startRequiringUserInterventionForBluetooth",
-      (event) => console.log(JSON.stringify(event))
-    )
   };
 
   function handleInitializeSDK() {
@@ -109,7 +75,14 @@ export default function Initialize() {
     }
 
     function onFail(error) {
-      setError(error);
+      // For App Restart Notification checks if the SDK is already running.
+      BluedotPointSdk.isInitialized().then((isInitialized) => {
+        if (isInitialized) {
+          setIsSdkInitialized(true)
+        } else {
+          setError(error);
+        }
+      });
     }
 
     BluedotPointSdk.initialize(projectId, onSuccess, onFail);

@@ -9,15 +9,19 @@ const styles = StyleSheet.create({
     },
     titleContainer: {
         alignItems: 'center',
-        marginBottom: 80
+        marginBottom: 60
     },
     title: {
         fontWeight: '800',
         fontSize: 18
     },
+    installRefContainer: {
+        alignItems: 'center',
+        marginBottom: 20
+    },
     eventContainer: {
         alignItems: 'center',
-        marginBottom: 80
+        marginBottom: 60
     },
     eventTitle: {
         fontSize: 14,
@@ -39,15 +43,14 @@ const styles = StyleSheet.create({
         maxWidth: 320
     },
     button: {
-        width: 200,
-        height: 50,
-        backgroundColor: 'tomato'
+        marginBottom: 10
     },
     textInput: {
         height: 40,
+        color: "black",
         borderColor: "gray",
         borderWidth: 1,
-        padding: 2,
+        padding: 5,
         marginBottom: 20
     },
     tempoWrapper: {

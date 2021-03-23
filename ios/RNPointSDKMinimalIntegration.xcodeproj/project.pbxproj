@@ -221,12 +221,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-frameworks.sh",
 				"${PODS_ROOT}/BluedotPointSDK/PointSDK/BDPointSDK.framework",
-				"${PODS_ROOT}/BluedotPointSDK/PointSDK/BDPointSDK.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDPointSDK.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/BDPointSDK.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

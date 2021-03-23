@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BluedotPointSdk from "@bluedot-innovation/bluedot-react-native";
+import BluedotPointSdk from "bluedot-react-native";
 import { useHistory } from "react-router";
 import { Button, Text, TextInput, View } from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";

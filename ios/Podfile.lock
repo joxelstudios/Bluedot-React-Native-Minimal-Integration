@@ -243,9 +243,7 @@ PODS:
   - React-jsinspector (0.61.2)
   - react-native-geolocation (2.0.2):
     - React
-  - react-native-get-random-values (1.5.1):
-    - React-Core
-  - react-native-plugin (2.0.1):
+  - react-native-plugin (2.0.2):
     - BluedotPointSDK
     - React
   - React-RCTActionSheet (0.61.2):
@@ -354,7 +352,6 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
-  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-plugin (from `../node_modules/bluedot-react-native`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -484,8 +481,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-geolocation:
     :path: "../node_modules/@react-native-community/geolocation"
-  react-native-get-random-values:
-    :path: "../node_modules/react-native-get-random-values"
   react-native-plugin:
     :path: "../node_modules/bluedot-react-native"
   React-RCTActionSheet:
@@ -601,8 +596,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
-  react-native-get-random-values: 41f0c91ac0da870e47b307e07752e9e54bc2dc7e
-  react-native-plugin: ec2a26f4c8c0591e32af705bd423d246d70a6455
+  react-native-plugin: 4175d41e22bda6b04f4fa42dce58e72ba6406896
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e

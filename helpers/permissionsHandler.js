@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { request, checkMultiple, requestMultiple, PERMISSIONS } from "react-native-permissions";
+import { request, checkMultiple, requestMultiple, PERMISSIONS, requestNotifications } from "react-native-permissions";
 import Geolocation from "@react-native-community/geolocation";
 import { OS } from "../enums";
 
@@ -28,5 +28,13 @@ export const requestLocationPermissions = async () => {
 export const requestBluetoothPermissions = async () => {
   if (Platform.OS === OS.IOS) {
     await request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL);
+  }
+};
+
+export const requestNotificationPermissions = async () => {
+  if (Platform.OS === OS.IOS) {
+    await requestNotifications(['alert', 'sound']).then(({status, settings}) => {
+      console.log(status);
+    });
   }
 };

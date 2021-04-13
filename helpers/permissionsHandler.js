@@ -34,7 +34,7 @@ export const requestBluetoothPermissions = async () => {
 export const requestNotificationPermissions = async () => {
   if (Platform.OS === OS.IOS) {
     await requestNotifications(['alert', 'sound']).then(({status, settings}) => {
-      console.log(status);
+      console.log("Notification Permission Status: " + status);
     });
   }
 };

@@ -3,6 +3,7 @@ import { NativeRouter, Route, Switch } from "react-router-native";
 import {
   requestLocationPermissions,
   requestBluetoothPermissions,
+  requestNotificationPermissions,
 } from "./helpers/permissionsHandler";
 import Initilize from "./components/InitializeSdk";
 import Main from "./components/Main";
@@ -14,6 +15,7 @@ export default function App() {
     // Ask location permission
     requestLocationPermissions();
     requestBluetoothPermissions();
+    requestNotificationPermissions();
   }, []);
 
   return (

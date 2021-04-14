@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Platform, Text, View } from "react-native";
 import { useHistory } from "react-router-native";
-import BluedotPointSdk from "@bluedot-innovation/bluedot-react-native";
+import BluedotPointSdk from "bluedot-react-native";
 import styles from "../styles";
 
 export default function GeoTriggering() {

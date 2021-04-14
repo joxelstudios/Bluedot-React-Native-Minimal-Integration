@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import BluedotPointSdk from "@bluedot-innovation/bluedot-react-native";
+import BluedotPointSdk from "bluedot-react-native";
 import { Text, View, Button, TextInput } from "react-native";
 import { useHistory } from "react-router-native"
 import styles from "../styles";

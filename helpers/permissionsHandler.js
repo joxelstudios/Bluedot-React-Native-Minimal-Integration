@@ -13,10 +13,17 @@ export const requestLocationPermissions = async () => {
     const hasLocationPermissions = currentPermissions["android.permission.ACCESS_BACKGROUND_LOCATION"] === 'granted' && currentPermissions["android.permission.ACCESS_FINE_LOCATION"] === 'granted'
 
     if (!hasLocationPermissions) {
-        requestMultiple([
-            PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
-            PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
-        ])
+      const OsVer = Platform.constants['Release'];
+      console.log('OsVer',OsVer);
+      //Removing requesting ACCESS_BACKGROUND_LOCATION permission for Android 11 and higher devices
+       if(OsVer >= 11) {
+          request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
+        } else {
+          requestMultiple([
+                    PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+                    PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
+                    ]);
+        }
     }
   }
 

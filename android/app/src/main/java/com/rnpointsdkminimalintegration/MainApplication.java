@@ -5,7 +5,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
+import com.zoontek.rnpermissions.RNPermissionsPackage;
 import io.bluedot.BluedotPointSdkPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;

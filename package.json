@@ -10,7 +10,7 @@
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/push-notification-ios": "^1.8.0",
-    "bluedot-react-native": "git://github.com/Bluedot-Innovation/Bluedot-React-Native-Plugin.git#dev/2.0.4",
+    "bluedot-react-native": "2.0.4",
     "expo": "^35.0.0",
     "expo-location": "^8.3.0",
     "metro": "^0.56.4",

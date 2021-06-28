@@ -5,6 +5,7 @@ import { OS } from '../enums'
 
 export const sendLocalNotification = (message) => {
     const title = 'BluedotPointSdk'
+    const channelId = "BluedotSDK"
 
     if (Platform.OS === OS.IOS) {
         PushNotificationIOS.addNotificationRequest({
@@ -16,9 +17,15 @@ export const sendLocalNotification = (message) => {
     }
 
     if (Platform.OS === OS.ANDROID) {
+        PushNotification.createChannel({
+            channelId: channelId,
+            channelName: "Bluedot SDK"
+        })
+
         PushNotification.localNotification({
-            title,
-            message,
+            channelId: channelId,
+            title: title,
+            message: message,
             playSound: false,
             smallIcon: "ic_launcher"
         })

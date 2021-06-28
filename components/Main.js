@@ -43,16 +43,6 @@ export default function Main() {
       "accuracyAuthorizationDidChange",
       (event) => console.log(JSON.stringify(event))
     );
-
-    BluedotPointSdk.unsubscribe(
-      "startRequiringUserInterventionForBluetooth",
-      (event) => console.log(JSON.stringify(event))
-    )
-
-    BluedotPointSdk.unsubscribe(
-      "startRequiringUserInterventionForBluetooth",
-      (event) => console.log(JSON.stringify(event))
-    )
   };
 
   const handleResetSdk = () => {

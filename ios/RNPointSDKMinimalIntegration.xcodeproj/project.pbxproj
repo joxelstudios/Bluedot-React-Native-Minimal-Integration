@@ -11,7 +11,9 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		E5A47DE131D75ADD7C06DB83 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAE9DEFB58008AE4ACEAD36 /* libPods-RNPointSDKMinimalIntegration.a */; };
+		8F1C51E52698061300ACAEF6 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1C51E42698061300ACAEF6 /* AppCenter-Config.plist */; };
+		8FCA61F3267B16E30061FA9E /* EmptyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA61F2267B16E30061FA9E /* EmptyFile.swift */; };
+		F8DACD97607B0C1D19C14618 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAA7A43B6D3971E0333A10F /* libPods-RNPointSDKMinimalIntegration.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,12 +25,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNPointSDKMinimalIntegration/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNPointSDKMinimalIntegration/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNPointSDKMinimalIntegration/main.m; sourceTree = "<group>"; };
-		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A57C2C6C52AD8903F2BECD89 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration.release.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration.release.xcconfig"; sourceTree = "<group>"; };
-		AAAE9DEFB58008AE4ACEAD36 /* libPods-RNPointSDKMinimalIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNPointSDKMinimalIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB66E94708D9F018BBF28C25 /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration.debug.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration.debug.xcconfig"; sourceTree = "<group>"; };
+		24FAAE7EDA13C576F22EC3A3 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration.release.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration.release.xcconfig"; sourceTree = "<group>"; };
+		3BAA7A43B6D3971E0333A10F /* libPods-RNPointSDKMinimalIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNPointSDKMinimalIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		714A50CFB3129E7A6B1F929C /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration.debug.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration.debug.xcconfig"; sourceTree = "<group>"; };
+		8F1C51E42698061300ACAEF6 /* AppCenter-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
+		8FCA61F1267B16E30061FA9E /* RNPointSDKMinimalIntegration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNPointSDKMinimalIntegration-Bridging-Header.h"; sourceTree = "<group>"; };
+		8FCA61F2267B16E30061FA9E /* EmptyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFile.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5A47DE131D75ADD7C06DB83 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */,
+				F8DACD97607B0C1D19C14618 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +56,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				8FCA61F2267B16E30061FA9E /* EmptyFile.swift */,
+				8FCA61F1267B16E30061FA9E /* RNPointSDKMinimalIntegration-Bridging-Header.h */,
+				8F1C51E42698061300ACAEF6 /* AppCenter-Config.plist */,
 			);
 			name = RNPointSDKMinimalIntegration;
 			sourceTree = "<group>";
@@ -61,9 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				AAAE9DEFB58008AE4ACEAD36 /* libPods-RNPointSDKMinimalIntegration.a */,
+				3BAA7A43B6D3971E0333A10F /* libPods-RNPointSDKMinimalIntegration.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -71,8 +75,8 @@
 		4009539384E3A8B221B2A710 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EB66E94708D9F018BBF28C25 /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */,
-				A57C2C6C52AD8903F2BECD89 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */,
+				714A50CFB3129E7A6B1F929C /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */,
+				24FAAE7EDA13C576F22EC3A3 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -113,13 +117,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNPointSDKMinimalIntegration" */;
 			buildPhases = (
-				52CC9C7B16FCB277D621C7F8 /* [CP] Check Pods Manifest.lock */,
+				78316554310B11ADBD237F3F /* [CP] Check Pods Manifest.lock */,
 				FD4C38642228810C00325AF5 /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				90608E86D5D4BA41A22B2BC9 /* [CP] Embed Pods Frameworks */,
+				1485CC069379CFD8B6BD2877 /* [CP] Embed Pods Frameworks */,
+				750C6F6E90CFA5CB7659D966 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -141,7 +146,8 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 9H7C75E224;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 1250;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -171,6 +177,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8F1C51E52698061300ACAEF6 /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,9 +196,47 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		52CC9C7B16FCB277D621C7F8 /* [CP] Check Pods Manifest.lock */ = {
+		1485CC069379CFD8B6BD2877 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-frameworks.sh",
+				"${PODS_ROOT}/BluedotPointSDK/PointSDK/BDPointSDK.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDPointSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		750C6F6E90CFA5CB7659D966 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78316554310B11ADBD237F3F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -211,24 +256,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		90608E86D5D4BA41A22B2BC9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-frameworks.sh",
-				"${PODS_ROOT}/BluedotPointSDK/PointSDK/BDPointSDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDPointSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD4C38642228810C00325AF5 /* Start Packager */ = {
@@ -257,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCA61F3267B16E30061FA9E /* EmptyFile.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -279,21 +307,22 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB66E94708D9F018BBF28C25 /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */;
+			baseConfigurationReference = 714A50CFB3129E7A6B1F929C /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 9H7C75E224;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = RNPointSDKMinimalIntegration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.0.5;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -302,27 +331,31 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bluedot.RNPointSDKMinimalIntegration;
 				PRODUCT_NAME = RNPointSDKMinimalIntegration;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development io.bluedot.*";
+				SWIFT_OBJC_BRIDGING_HEADER = "RNPointSDKMinimalIntegration-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A57C2C6C52AD8903F2BECD89 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */;
+			baseConfigurationReference = 24FAAE7EDA13C576F22EC3A3 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9H7C75E224;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				INFOPLIST_FILE = RNPointSDKMinimalIntegration/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 2.0.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -330,7 +363,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.bluedot.RNPointSDKMinimalIntegration;
 				PRODUCT_NAME = RNPointSDKMinimalIntegration;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc io.bluedot.*";
+				SWIFT_OBJC_BRIDGING_HEADER = "RNPointSDKMinimalIntegration-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -366,6 +401,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,6 +455,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

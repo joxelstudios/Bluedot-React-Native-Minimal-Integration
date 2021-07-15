@@ -103,7 +103,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "2.0.4"
+        versionName "2.0.5"
     }
     splits {
         abi {
@@ -158,13 +158,13 @@ dependencies {
     implementation project(':react-native-screens')
     implementation project(':react-native-reanimated')
     implementation project(':react-native-gesture-handler')
+    implementation project(path: ':unimodules-core') // From node_modules
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation "com.facebook.react:react-native:+"  // From node_modules
-    
-    def appCenterSdkVersion = '4.1.1'
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+    implementation "com.facebook.react:react-native:+"
+
+    implementation project(':appcenter-crashes')
+    implementation project(':appcenter')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermesvm/android/";

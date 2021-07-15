@@ -37,32 +37,12 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to access your bluetooth</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to access your bluetooth</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to access your calendar</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to use the camera</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration experiences to access your contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Allow React Native Point SDK Minimal Integration to use your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Allow React Native Point SDK Minimal Integration to use your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow React Native Point SDK Minimal Integration to use your location</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to access your microphone</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to access your device's accelerometer</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Give React Native Point SDK Minimal Integration periences permission to save photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give React Native Point SDK Minimal Integration periences permission to access your photos</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Allow React Native Point SDK Minimal Integration to access your reminders</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

@@ -1,5 +1,5 @@
-# Bluedot ReactNative Minimal Integration v2.0.5
+# Bluedot ReactNative Minimal Integration v2.1.0
 
 ## New changes
-* react-native v 0.64.2
-* CI
+* Using Bluedot plugin 2.1.0
+* CompileSdkVersion updated to 31

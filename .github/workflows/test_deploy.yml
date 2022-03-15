@@ -119,7 +119,7 @@ jobs:
           name: pre_release_wrapper
 
       # install pre-release version of RN wrapper when this is a downstream build
-      - name: isntall pre-release wrapper
+      - name: install pre-release wrapper
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build == 'true' }}
         run: |
           npm install ${{ needs.prepare-pre-release.outputs.file_name }}
@@ -157,12 +157,23 @@ jobs:
           cd android
           ./gradlew assembleRelease
       
+      - name: Sign Android release
+        # ID used to access signed output path in next step
+        id: sign_app 
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: android/app/build/outputs/apk/release/
+          signingKeyBase64: ${{ secrets.ANDROID_RELEASE_KEYSTORE }}
+          alias: {{ secrets.ANDROID_RELEASE_KEYSTORE_ALIAS }}
+          keyStorePassword: ${{ secrets.ANDROID_RELEASE_KEYSTORE_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.ANDROID_RELEASE_KEYSTORE_KEY_PASSWORD }}
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
           # Artifact name
           name: Android
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
 
   build-ios-app:
     runs-on: macos-latest

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, Button } from "react-native";
-import { useHistory } from "react-router-native"
+import { useNavigate } from "react-router"
 import BluedotPointSdk from "bluedot-react-native";
 import styles from "../styles";
 
 export default function Main() {
+  const navigate = useNavigate()
   const [installRef, setInstallRef] = useState(null);
   const [sdkVersion, setSdkVersion] = useState(null);
-  const history = useHistory()
 
   useEffect(() => {
     // Get device's Install Reference
@@ -48,7 +48,7 @@ export default function Main() {
   const handleResetSdk = () => {
     const onSuccess = () => {
       unsubscribeBluedotListeners()
-      history.push('/');
+      navigate('/');
     }
 
     const onFail = (error) => console.error('Error', error)
@@ -77,8 +77,8 @@ export default function Main() {
       )}
 
       <View>
-        <Button title="Geo-triggering" onPress={() => history.push('/geotriggering')}/>
-        <Button title="Tempo" onPress={() => history.push('/tempo')}/>
+        <Button title="Geo-triggering" onPress={() => navigate('/geotriggering')}/>
+        <Button title="Tempo" onPress={() => navigate('/tempo')}/>
         <Button title="Reset SDK" onPress={handleResetSdk}/>
       </View>
     </View>

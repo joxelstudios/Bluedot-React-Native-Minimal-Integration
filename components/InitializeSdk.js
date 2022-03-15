@@ -5,7 +5,7 @@ import { Button, Text, TextInput, View } from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";
 import styles from "../styles";
 
-const PROJECTID = "7c285bc1-6fe2-432a-8b37-6cdd68c1306e";
+const PROJECTID = "<YOUR_PROJECT_ID_GOES_HERE>";
 
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);

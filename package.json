@@ -12,7 +12,7 @@
     "@react-native-community/push-notification-ios": "^1.10.1",
     "appcenter": "4.4.3",
     "appcenter-crashes": "4.4.3",
-    "bluedot-react-native": "Bluedot-Innovation/Bluedot-React-Native-Plugin#dn/update-rn-67",
+    "bluedot-react-native": "Bluedot-Innovation/Bluedot-React-Native-Plugin#dev/update-rn-67",
     "expo": ">=44.0.0-0 <45.0.0",
     "expo-splash-screen": "~0.14.1",
     "react": "17.0.2",

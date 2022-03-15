@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { NativeRouter, Route, Router, Routes, Switch } from "react-router-native";
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeRouter, Route, Routes } from "react-router-native";
 import {
   requestLocationPermissions,
   requestBluetoothPermissions,

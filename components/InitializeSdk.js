@@ -5,7 +5,7 @@ import { Button, Text, TextInput, View } from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";
 import styles from "../styles";
 
-const PROJECTID = "<YOUR_PROJECT_ID_GOES_HERE>";
+const PROJECTID = "YOUR_PROJECT_ID_GOES_HERE";
 
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);
@@ -101,7 +101,7 @@ export default function Initialize() {
       {error !== null && <Text>Error authenticating {error}</Text>}
 
       <Button
-        title="Initialize New"
+        title="Initialize"
         onPress={handleInitializeSDK}
         disabled={Boolean(!projectId)}
       />

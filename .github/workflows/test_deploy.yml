@@ -24,6 +24,7 @@ on:
 env:
   ANDROID_SIGNED_NAME: "app-release-signed.apk"
   ANDROID_RELEASE_DIR: "android/app/build/outputs/apk/release"
+  ANDROID_SIGNED_PATH: "android/app/build/outputs/apk/release/app-release-signed.apk"
 
 jobs:
   prepare-pre-release:
@@ -176,15 +177,16 @@ jobs:
           BUILD_TOOLS_VERSION: "30.0.2"
 
       # The sign_app step returns weird file name app-release-unsigned-signed.apk, rename it to a consistent and reusable name
-      - name: rename signed file
-        run: mv ${{steps.sign_app.outputs.signedReleaseFile}} ${{ env.ANDROID_RELEASE_DIR }}/${{ env.ANDROID_SIGNED_NAME }}
+      - name: rename signed file if needed
+        if: ${{ steps.sign_app.outputs.signedReleaseFile != env.ANDROID_SIGNED_PATH }}
+        run: mv ${{ steps.sign_app.outputs.signedReleaseFile }} ${{ env.ANDROID_SIGNED_PATH }}
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
           # Artifact name
           name: Android
-          path: ${{ env.ANDROID_RELEASE_DIR }}/${{ env.ANDROID_SIGNED_NAME }}
+          path: ${{ env.ANDROID_SIGNED_PATH }}
 
   build-ios-app:
     runs-on: macos-latest

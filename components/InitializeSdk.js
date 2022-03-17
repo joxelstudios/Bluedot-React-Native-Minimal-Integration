@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import BluedotPointSdk from "bluedot-react-native";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { Button, Text, TextInput, View } from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";
 import styles from "../styles";
 
-const PROJECTID = "<YOUR_PROJECT_ID_GOES_HERE>";
+const PROJECTID = "YOUR_PROJECT_ID_GOES_HERE";
 
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);
   const [error, setError] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isSdkInitialized, setIsSdkInitialized] = useState(false);
 
 
@@ -30,7 +30,7 @@ export default function Initialize() {
   }, []);
 
   useEffect(() => {
-    if (isSdkInitialized) history.push("/main");
+    if (isSdkInitialized) navigate("/main");
   }, [isSdkInitialized])
 
   const registerBluedotListeners = () => {
@@ -68,7 +68,7 @@ export default function Initialize() {
   function handleInitializeSDK() {
     function onSuccess() {
       registerBluedotListeners();
-      history.push("/main");
+      navigate("/main");
     }
 
     function onFail(error) {
@@ -81,7 +81,6 @@ export default function Initialize() {
         }
       });
     }
-
     BluedotPointSdk.initialize(projectId, onSuccess, onFail);
   }
 

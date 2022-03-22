@@ -7,14 +7,13 @@ on:
   push:
     branches:
       - master
+      - release/*
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+-pre\+build\.[0-9]+'
-  pull_request:
-    branches:
-      - master
+
   workflow_dispatch:
     inputs:
-      tag:
+      tags:
         description: 'Build an app with a specific wrapper version'
         required: true
         default: 'Bluedot-React-Native-Plugin release'
@@ -49,7 +48,7 @@ jobs:
             echo "::set-output name=tag::${BASH_REMATCH[1]}"
             echo "::set-output name=semver::${BASH_REMATCH[2]}"
             echo "::set-output name=version::${BASH_REMATCH[3]}"
-          elif [[ ${{ github.event.inputs.tag }} =~ $regex ]]; then
+          elif [[ ${{ github.event.inputs.tags }} =~ $regex ]]; then
             echo "::set-output name=tag::${BASH_REMATCH[1]}"
             echo "::set-output name=semver::${BASH_REMATCH[2]}"
             echo "::set-output name=version::${BASH_REMATCH[3]}"
@@ -119,7 +118,7 @@ jobs:
           name: pre_release_wrapper
 
       # install pre-release version of RN wrapper when this is a downstream build
-      - name: isntall pre-release wrapper
+      - name: install pre-release wrapper
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build == 'true' }}
         run: |
           npm install ${{ needs.prepare-pre-release.outputs.file_name }}
@@ -261,10 +260,20 @@ jobs:
 
     steps:
       # Checks-out your repository to get release notes
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Download artifact
         uses: actions/download-artifact@v2
+
+      - name: Read file contents
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "ReleaseNotes.md"
+
+      - name: File contents
+        run: echo "${{ steps.read_file.outputs.contents }}"
 
       - name: upload Android app to App Center
         uses: wzieba/AppCenter-Github-Action@v1
@@ -274,7 +283,7 @@ jobs:
           group: Collaborators
           file: Android/app-release.apk
           notifyTesters: true
-          releaseNotes: ReleaseNotes.md
+          releaseNotes: ${{steps.read_file.outputs.contents}}
           debug: true
 
       - name: upload iOS app to App Center
@@ -285,4 +294,4 @@ jobs:
           group: Collaborators
           file: iOS/RNPointSDKMinimalIntegration.ipa
           notifyTesters: true
-          releaseNotes: ReleaseNotes.md
+          releaseNotes: ${{steps.read_file.outputs.contents}}

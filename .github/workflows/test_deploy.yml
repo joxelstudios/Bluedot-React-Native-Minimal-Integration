@@ -53,10 +53,10 @@ jobs:
           
       - name: set semver for input tags
         id: semver_input
-        if: ${{ steps.check-tag.outputs.is_tag_build == 'true' }} && contains(github.event.inputs.tags, '-pre+build.')
-        run: | 
+        if: contains(github.event.inputs.tags, '-pre+build.')
+        run: |
           regex=".*(v(([0-9]+\.[0-9]+\.[0-9]+)-pre\+build.[0-9]+))"
-          if [[ ${{ github.event.inputs.tags }} =~ $regex ]]; then
+          if ${{ steps.check-tag.outputs.is_tag_build == 'true' }} && [[ ${{ github.event.inputs.tags }} =~ $regex ]]; then
             echo "::set-output name=tag::${BASH_REMATCH[1]}"
             echo "::set-output name=semver::${BASH_REMATCH[2]}"
             echo "::set-output name=version::${BASH_REMATCH[3]}"

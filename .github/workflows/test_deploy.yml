@@ -275,6 +275,7 @@ jobs:
         uses: actions/download-artifact@v2
 
       - name: Extract files
+        if: ${{ needs.prepare-pre-release.outputs.is_tag_build }}
         uses: a7ul/tar-action@v1.1.0
         id: extract
         with:

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Text, View, Button } from 'react-native';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { requestLocationPermissions } from '../helpers/permissionsHandler';
 
 
 export default function RequestLocationPermissions() {
-    const history = useHistory()
+    const navigate = useNavigate()
 
     async function handleOnPress() {
         try {
             await requestLocationPermissions()
-            history.push('/initialize')
+            navigate('/initialize')
         } catch (error) {
             console.error(error)
         }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Button, Platform, Text, View } from "react-native";
-import { useHistory } from "react-router-native";
+import { useNavigate } from "react-router";
 import BluedotPointSdk from "bluedot-react-native";
 import styles from "../styles";
 
 export default function GeoTriggering() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isGeotriggeringRunning, setIsGeotriggeringRunning] = useState(false);
   const [error, setError] = useState(null);
 
@@ -97,7 +97,7 @@ export default function GeoTriggering() {
 
       <Button
         title="Back"
-        onPress={() => history.push("/main")}
+        onPress={() => navigate("/main")}
         style={styles.button}
       />
 

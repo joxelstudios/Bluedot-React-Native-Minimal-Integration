@@ -54,6 +54,7 @@ captures/
 .idea/navEditor.xml
 
 android/.idea/*
+android/app/.idea/*
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
@@ -534,3 +535,4 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/node,xcode,macos,android,cocoapods,reactnative,androidstudio,visualstudiocode
+.vscode/settings.json

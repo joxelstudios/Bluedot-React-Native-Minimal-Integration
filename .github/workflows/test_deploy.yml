@@ -18,8 +18,12 @@ on:
         required: true
         default: 'Bluedot-React-Native-Plugin release'
 
+# Some global environments to avoid duplicates
 env:
- RN_PATH: "ReleaseNotes.md"
+  ANDROID_SIGNED_NAME: "app-release-signed.apk"
+  ANDROID_RELEASE_DIR: "android/app/build/outputs/apk/release"
+  ANDROID_SIGNED_PATH: "android/app/build/outputs/apk/release/app-release-signed.apk"
+  RN_PATH: "ReleaseNotes.md"
 
 jobs:
   prepare-pre-release:
@@ -164,12 +168,31 @@ jobs:
           cd android
           ./gradlew assembleRelease
       
+      - name: Sign Android release
+        # ID used to access signed output path in next step
+        id: sign_app 
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: ${{ env.ANDROID_RELEASE_DIR }}
+          signingKeyBase64: ${{ secrets.ANDROID_RELEASE_KEYSTORE }}
+          alias: ${{ secrets.ANDROID_RELEASE_KEYSTORE_ALIAS }}
+          keyStorePassword: ${{ secrets.ANDROID_RELEASE_KEYSTORE_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.ANDROID_RELEASE_KEYSTORE_KEY_PASSWORD }}
+        env:
+          # override default build-tools version (29.0.3) -- optional
+          BUILD_TOOLS_VERSION: "30.0.2"
+
+      # The sign_app step returns weird file name app-release-unsigned-signed.apk, rename it to a consistent and reusable name
+      - name: rename signed file if needed
+        if: ${{ steps.sign_app.outputs.signedReleaseFile != env.ANDROID_SIGNED_PATH }}
+        run: mv ${{ steps.sign_app.outputs.signedReleaseFile }} ${{ env.ANDROID_SIGNED_PATH }}
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
           # Artifact name
           name: Android
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: ${{ env.ANDROID_SIGNED_PATH }}
 
   build-ios-app:
     runs-on: macos-latest
@@ -301,7 +324,7 @@ jobs:
           appName: bluedot/BDReactNativeIntegration-1
           token: ${{ secrets.APPCENTER_TOKEN }}
           group: Collaborators
-          file: Android/app-release.apk
+          file: Android/${{ env.ANDROID_SIGNED_NAME }}
           notifyTesters: true
           releaseNotes: ${{steps.read_file.outputs.contents}}
           debug: true

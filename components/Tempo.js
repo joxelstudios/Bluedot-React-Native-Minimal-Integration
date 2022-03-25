@@ -1,14 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
 import BluedotPointSdk from "bluedot-react-native";
 import { Text, View, Button, TextInput } from "react-native";
-import { useHistory } from "react-router-native"
+import { useNavigate } from "react-router"
 import styles from "../styles";
 
 export default function Tempo({ hasStarted }) {
   const [destinationId, setDestinationId] = useState("");
   const [isTempoRunning, setIsTempoRunning] = useState(false);
   const [error, setError] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate()
   const tempoBuilder = new BluedotPointSdk.TempoBuilder();
 
   useEffect(() => {
@@ -91,7 +91,7 @@ export default function Tempo({ hasStarted }) {
             onPress={handleStartTempo}
           />
         )}
-        <Button title="Back" onPress={() => history.push('/main')}/>
+        <Button title="Back" onPress={() => navigate('/main')}/>
       </View>
     </View>
   );

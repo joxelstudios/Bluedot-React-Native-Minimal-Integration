@@ -303,12 +303,12 @@ jobs:
             echo "$(ls -al ./pre_release_wrapper/)" | echo "$(tar -xvzf ./pre_release_wrapper/${{ needs.prepare-pre-release.outputs.file_name }})"
 
 
-      - name: Set RN Path
+      - name: Set ReleaseNote path for tag build
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build }}
         run: |
           echo "RN_PATH="./package/ReleaseNotes.md"" >> $GITHUB_ENV
 
-      - name: Read RN
+      - name: Read Release Notes
         id: read_file
         uses: andstor/file-reader-action@v1
         with:

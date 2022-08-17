@@ -5,7 +5,7 @@ import { Button, Text, TextInput, View } from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";
 import styles from "../styles";
 
-const PROJECTID = "YOUR_PROJECT_ID_GOES_HERE";
+const PROJECTID = "7c285bc1-6fe2-432a-8b37-6cdd68c1306e";
 
 export default function Initialize() {
   const [projectId, setProjectId] = useState(PROJECTID);
@@ -18,7 +18,7 @@ export default function Initialize() {
     BluedotPointSdk.isInitialized().then((isInitialized) => {
       if (isInitialized) setIsSdkInitialized(true)
     });
-    
+
     // Set custom event metadata.
     // We suggest to set the Custom Event Meta Data before starting GeoTriggering or Tempo.
     BluedotPointSdk.setCustomEventMetaData({

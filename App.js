@@ -28,7 +28,7 @@ export default function App() {
         <Route exact path="/main" element={<Main />} />
         <Route exact path="/geotriggering" element={<GeoTriggering />} />
         <Route exact path="/tempo" element={<Tempo />} />
-      </Routes> 
-      </NativeRouter>
+      </Routes>
+    </NativeRouter>
   );
 }

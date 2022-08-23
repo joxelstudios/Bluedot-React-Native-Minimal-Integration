@@ -16,7 +16,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (4.2.2):
     - ExpoModulesCore
-  - EXConstants (13.2.3):
+  - EXConstants (13.2.4):
     - ExpoModulesCore
   - EXErrorRecovery (3.2.0):
     - ExpoModulesCore
@@ -24,14 +24,14 @@ PODS:
     - ExpoModulesCore
   - EXFont (10.2.0):
     - ExpoModulesCore
-  - Expo (46.0.7):
+  - Expo (46.0.9):
     - ExpoModulesCore
   - ExpoKeepAwake (10.2.0):
     - ExpoModulesCore
-  - ExpoModulesCore (0.11.3):
+  - ExpoModulesCore (0.11.4):
     - React-Core
     - ReactCommon/turbomodule/core
-  - EXSplashScreen (0.16.1):
+  - EXSplashScreen (0.16.2):
     - ExpoModulesCore
     - React-Core
   - FBLazyVector (0.69.4)
@@ -257,7 +257,7 @@ PODS:
     - glog
   - react-native-geolocation (2.1.0):
     - React-Core
-  - react-native-plugin (2.1.3):
+  - react-native-plugin (2.2.0):
     - BluedotPointSDK (= 15.6.4)
     - React
   - React-perflogger (0.69.4)
@@ -332,7 +332,7 @@ PODS:
     - React-Core
   - RNPermissions (3.6.1):
     - React-Core
-  - RNReanimated (2.9.1):
+  - RNReanimated (2.10.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -538,14 +538,14 @@ SPEC CHECKSUMS:
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   EXApplication: e418d737a036e788510f2c4ad6c10a7d54d18586
-  EXConstants: 75c40827af38bd6bfcf69f880a5b45037eeff9c9
+  EXConstants: 7c44785d41d8e959d527d23d29444277a4d1ee73
   EXErrorRecovery: 74d71ee59f6814315457b09d68e86aa95cc7d05d
   EXFileSystem: 927e0a8885aa9c49e50fc38eaba2c2389f2f1019
   EXFont: a5d80bd9b3452b2d5abbce2487da89b0150e6487
-  Expo: 8cb51419dfec611e6125e09384669eb71d3c4c6d
+  Expo: 73412414e62f5cbc6e713def821de70b92cd3ad6
   ExpoKeepAwake: 0e8f18142e71bbf2c7f6aa66ebed249ba1420320
-  ExpoModulesCore: 8303cc952788be09fc6eab62815d257016ae6dec
-  EXSplashScreen: 31ab6df6d23e97e074d1330224741979943f1d82
+  ExpoModulesCore: e281bb7b78ea47e227dd5af94d04b24d8b2e1255
+  EXSplashScreen: 799bece80089219b2c989c1082d70f3b00995cda
   FBLazyVector: c71b8c429a8af2aff1013934a7152e9d9d0c937d
   FBReactNativeSpec: cb0df4f0084281b394f76bb9b4d1d9540f35963f
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
@@ -566,7 +566,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8a3d3f5dcd23a91e8c80b1bf0e96902cd1dca999
   React-logger: 1088859f145b8f6dd0d3ed051a647ef0e3e80fad
   react-native-geolocation: 69f4fd37650b8e7fee91816d395e62dd16f5ab8d
-  react-native-plugin: 44be78388ddd8c06d2b0d85fa21e183536aee63f
+  react-native-plugin: 9f6d7b701bf1a693e2422614d6e4140001d43f88
   React-perflogger: cb386fd44c97ec7f8199c04c12b22066b0f2e1e0
   React-RCTActionSheet: f803a85e46cf5b4066c2ac5e122447f918e9c6e5
   React-RCTAnimation: 19c80fa950ccce7f4db76a2a7f2cf79baae07fc7
@@ -582,7 +582,7 @@ SPEC CHECKSUMS:
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
-  RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
+  RNReanimated: 7faa787e8d4493fbc95fab2ad331fa7625828cfa
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   Yoga: ff994563b2fd98c982ca58e8cd9db2cdaf4dda74
 

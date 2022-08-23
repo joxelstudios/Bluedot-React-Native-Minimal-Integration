@@ -2,21 +2,19 @@
 
 name: deploy apps for QA
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   push:
     branches:
-      - master
-      - release/*
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+-pre\+build\.[0-9]+'
 
   workflow_dispatch:
     inputs:
       tags:
-        description: 'Build an app with a specific wrapper version'
+        description: "Build an app with a specific wrapper version"
         required: true
-        default: 'Bluedot-React-Native-Plugin release'
+        default: "Bluedot-React-Native-Plugin release"
 
 # Some global environments to avoid duplicates
 env:
@@ -54,7 +52,7 @@ jobs:
             echo "::set-output name=semver::${BASH_REMATCH[2]}"
             echo "::set-output name=version::${BASH_REMATCH[3]}"
           fi
-          
+
       - name: set semver for input tags
         id: semver_input
         if: contains(github.event.inputs.tags, '-pre+build.')
@@ -65,7 +63,7 @@ jobs:
             echo "::set-output name=semver::${BASH_REMATCH[2]}"
             echo "::set-output name=version::${BASH_REMATCH[3]}"
           fi
-          
+
       - name: download pre-release wrapper
         if: ${{ steps.check-tag.outputs.is_tag_build == 'true' }}
         uses: i3h/download-release-asset@v1
@@ -100,11 +98,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       # make sure that node installed
       - name: intall node
         uses: actions/setup-node@v2.1.5
-      
+
       # restore react-native dependencies
       - name: npm cache
         uses: actions/cache@v2.1.6
@@ -113,7 +111,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-       
+
       - name: install npm dependencies
         run: |
           npm install
@@ -140,7 +138,7 @@ jobs:
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build == 'true' }}
         uses: damienaicheh/update-android-version-gradle-action@v1.0.0
         with:
-          build-gradle-path: './android/build.gradle'
+          build-gradle-path: "./android/build.gradle"
           version-code: ${{ github.run_number }}
           version-name: ${{ needs.prepare-pre-release.outputs.semver }}
           print-file: true
@@ -162,15 +160,15 @@ jobs:
           find: "{APP_SECRET_VALUE}"
           replace: ${{ secrets.APPCENTER_SECRET_ANDROID }}
           include: appcenter-config.json
-                
+
       - name: build Android app
         run: |
           cd android
           ./gradlew assembleRelease
-      
+
       - name: Sign Android release
         # ID used to access signed output path in next step
-        id: sign_app 
+        id: sign_app
         uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: ${{ env.ANDROID_RELEASE_DIR }}
@@ -201,11 +199,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       # make sure that node installed
       - name: intall node
         uses: actions/setup-node@v2.1.5
-      
+
       # restore react-native dependencies
       - name: npm cache
         uses: actions/cache@v2.1.6
@@ -214,7 +212,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-            
+
       - name: install npm dependencies
         run: |
           npm install
@@ -235,9 +233,9 @@ jobs:
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build == 'true' }}
         run: |
           npm install ${{ needs.prepare-pre-release.outputs.file_name }}
-      
+
       # update an app version to match SDK version when this is a downstream build
-      - name: update version number 
+      - name: update version number
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build == 'true' }}
         uses: yanamura/ios-bump-version@v1
         with:
@@ -276,19 +274,19 @@ jobs:
         run: |
           cd ios
           fastlane build
-        
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
           # Artifact name
           name: iOS
           path: ios/RNPointSDKMinimalIntegration.ipa
-        
+
   deploy-to-appcenter:
     runs-on: ubuntu-latest
 
     needs: [prepare-pre-release, build-android-app, build-ios-app]
-    
+
     steps:
       # Checks-out your repository to get release notes
       - name: Checkout code
@@ -300,8 +298,7 @@ jobs:
       - name: List names of Prerelease artifact
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build }}
         run: |
-            echo "$(ls -al ./pre_release_wrapper/)" | echo "$(tar -xvzf ./pre_release_wrapper/${{ needs.prepare-pre-release.outputs.file_name }})"
-
+          echo "$(ls -al ./pre_release_wrapper/)" | echo "$(tar -xvzf ./pre_release_wrapper/${{ needs.prepare-pre-release.outputs.file_name }})"
 
       - name: Set ReleaseNote path for tag build
         if: ${{ needs.prepare-pre-release.outputs.is_tag_build }}
@@ -312,7 +309,7 @@ jobs:
         id: read_file
         uses: andstor/file-reader-action@v1
         with:
-         path: ${{ env.RN_PATH }}
+          path: ${{ env.RN_PATH }}
 
       - name: File contents
         run: echo " ${{ steps.read_file.outputs.contents }}"

@@ -6,24 +6,24 @@ import { OS } from "../enums";
 export const requestLocationPermissions = async () => {
   if (Platform.OS === OS.ANDROID) {
     const currentPermissions = await checkMultiple([
-        PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
-        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
+      PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+      PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
     ])
 
     const hasLocationPermissions = currentPermissions["android.permission.ACCESS_BACKGROUND_LOCATION"] === 'granted' && currentPermissions["android.permission.ACCESS_FINE_LOCATION"] === 'granted'
 
     if (!hasLocationPermissions) {
       const OsVer = Platform.constants['Release'];
-      console.log('OsVer',OsVer);
+      console.log('OsVer', OsVer);
       //Removing requesting ACCESS_BACKGROUND_LOCATION permission for Android 11 and higher devices
-       if(OsVer >= 11) {
-          request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
-        } else {
-          requestMultiple([
-                    PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
-                    PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
-                    ]);
-        }
+      if (OsVer >= 11) {
+        request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
+      } else {
+        requestMultiple([
+          PERMISSIONS.ANDROID.ACCESS_BACKGROUND_LOCATION,
+          PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
+        ]);
+      }
     }
   }
 
@@ -40,7 +40,7 @@ export const requestBluetoothPermissions = async () => {
 
 export const requestNotificationPermissions = async () => {
   if (Platform.OS === OS.IOS) {
-    await requestNotifications(['alert', 'sound']).then(({status, settings}) => {
+    await requestNotifications(['alert', 'sound']).then(({ status, settings }) => {
       console.log("Notification Permission Status: " + status);
     });
   }

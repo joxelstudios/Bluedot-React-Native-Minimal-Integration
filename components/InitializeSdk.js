@@ -18,7 +18,7 @@ export default function Initialize() {
     BluedotPointSdk.isInitialized().then((isInitialized) => {
       if (isInitialized) setIsSdkInitialized(true)
     });
-    
+
     // Set custom event metadata.
     // We suggest to set the Custom Event Meta Data before starting GeoTriggering or Tempo.
     BluedotPointSdk.setCustomEventMetaData({

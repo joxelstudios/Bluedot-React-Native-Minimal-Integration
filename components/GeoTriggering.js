@@ -1,20 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { Button, Platform, Text, View } from "react-native";
+import { Button, Platform, Text, View, Switch } from "react-native";
 import { useNavigate } from "react-router";
 import BluedotPointSdk from "bluedot-react-native";
 import styles from "../styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function GeoTriggering() {
+
   const navigate = useNavigate();
   const [isGeotriggeringRunning, setIsGeotriggeringRunning] = useState(false);
   const [error, setError] = useState(null);
+  const [isBackgroundLocationUpdatesEnabled, setIsBackgroundLocationUpdatesEnabled] = useState(false);
+  const allowsBackgroundLocationUpdatesString = "allowsBackgroundLocationUpdates";
+  const toggleSwitch = async (value) => {
+    setIsBackgroundLocationUpdatesEnabled(value);
+    BluedotPointSdk.allowsBackgroundLocationUpdates(value);
+    try {
+    await AsyncStorage.setItem(allowsBackgroundLocationUpdatesString, value.toString());
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const geoTriggeringBuilder = new BluedotPointSdk.GeoTriggeringBuilder();
+  let isBackgroundLocationUpdatesEnabledString = `Is Background Location Enabled: ${isBackgroundLocationUpdatesEnabled}`;
 
   useEffect(() => {
     BluedotPointSdk.isGeoTriggeringRunning().then((isRunning) => {
       setIsGeotriggeringRunning(isRunning);
     });
+
+    const retrieveBackgroundLocationStatus = async () => {
+      try {
+        const isBackgroundLocationUpdatesAllowed = ((await AsyncStorage.getItem(allowsBackgroundLocationUpdatesString) || 'false') === 'true')
+        if(isBackgroundLocationUpdatesAllowed !== null) {
+          setIsBackgroundLocationUpdatesEnabled(isBackgroundLocationUpdatesAllowed);
+        }
+      } catch(e) {
+        console.log(e);
+      }
+    };
+    
+    retrieveBackgroundLocationStatus();
+
   }, []);
 
   const handleStartGeotriggering = () => {
@@ -85,6 +113,16 @@ export default function GeoTriggering() {
     <View style={styles.container}>
       <Text style={styles.eventTitle}>Geo Triggering</Text>
       {error ? <Text>Error: {error}</Text> : null}
+      <Text>Allow Background Location Updates</Text>
+      { Platform.OS == "ios" ? (
+        <Switch
+          onValueChange={toggleSwitch}
+          value={isBackgroundLocationUpdatesEnabled}
+        />
+        ): {}}
+      { Platform.OS == "ios" ? (
+        <Text>{isBackgroundLocationUpdatesEnabledString}</Text>
+        ): {}}
       {isGeotriggeringRunning ? (
         <Button
           title={"Stop"}
@@ -94,7 +132,6 @@ export default function GeoTriggering() {
       ) : (
         renderStartButtons()
       )}
-
       <Button
         title="Back"
         onPress={() => navigate("/main")}

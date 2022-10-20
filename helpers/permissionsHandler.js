@@ -28,6 +28,10 @@ export const requestLocationPermissions = async () => {
   }
 
   if (Platform.OS === OS.IOS) {
+    Geolocation.setRNConfiguration({
+    skipPermissionRequests: false,
+     authorizationLevel: 'whenInUse',
+   });
     Geolocation.requestAuthorization();
   }
 };

@@ -113,16 +113,14 @@ export default function GeoTriggering() {
     <View style={styles.container}>
       <Text style={styles.eventTitle}>Geo Triggering</Text>
       {error ? <Text>Error: {error}</Text> : null}
-      <Text>Allow Background Location Updates</Text>
-      { Platform.OS == "ios" ? (
+      {Platform.OS === 'ios' && <>
+        <Text>Allow Background Location Updates</Text>
         <Switch
           onValueChange={toggleSwitch}
           value={isBackgroundLocationUpdatesEnabled}
         />
-        ): {}}
-      { Platform.OS == "ios" ? (
         <Text>{isBackgroundLocationUpdatesEnabledString}</Text>
-        ): {}}
+      </>}
       {isGeotriggeringRunning ? (
         <Button
           title={"Stop"}

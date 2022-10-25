@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import BluedotPointSdk from "bluedot-react-native";
 import styles from "../styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { OS } from "../enums";
 
 export default function GeoTriggering() {
 
@@ -92,7 +93,7 @@ export default function GeoTriggering() {
   const renderStartButtons = () => {
     return (
       <>
-        {Platform.OS === "android" && (
+        {Platform.OS === OS.ANDROID && (
           <Button
             title={"Start with foreground notification"}
             onPress={handleStartGeotriggeringWithAndroidNotification}
@@ -113,7 +114,7 @@ export default function GeoTriggering() {
     <View style={styles.container}>
       <Text style={styles.eventTitle}>Geo Triggering</Text>
       {error ? <Text>Error: {error}</Text> : null}
-      {Platform.OS === 'ios' && <>
+      {Platform.OS === OS.IOS && <>
         <Text>Allow Background Location Updates</Text>
         <Switch
           onValueChange={toggleSwitch}

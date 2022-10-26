@@ -17,12 +17,19 @@ export default function Tempo({ hasStarted }) {
 
   function handleStartTempo() {
     function onStartTempoSuccess() {
-        BluedotPointSdk.isTempoRunning().then(setIsTempoRunning)
-      }
+      console.log('Tempo has started successfuly')
+      BluedotPointSdk.isTempoRunning().then(setIsTempoRunning)
+    }
     
-      function onStartTempoFailed(error) {
-        setError(error)
-      }
+    function onStartTempoFailed(error) {
+      console.error('Error Starting Tempo: ', error);
+      setError(error)
+    }
+
+    BluedotPointSdk.setCustomEventMetaData({
+      orderId: randomOrderId(6),
+      customerName: "Customer"
+    })
 
       const androidNotificationParams = {
         channelId: 'Bluedot React',
@@ -59,6 +66,16 @@ export default function Tempo({ hasStarted }) {
         onStopTempoSuccess,
         onStopTempoFailed
       )
+  }
+
+  function randomOrderId(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
 
   return (

@@ -11,24 +11,22 @@ PODS:
     - AppCenter/Core
   - AppCenterReactNativeShared (4.4.5):
     - AppCenter/Core (= 4.4.3)
-  - BluedotPointSDK (15.6.4)
+  - BluedotPointSDK (15.6.5)
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
   - EXApplication (4.2.2):
     - ExpoModulesCore
   - EXConstants (13.2.4):
     - ExpoModulesCore
-  - EXErrorRecovery (3.2.0):
-    - ExpoModulesCore
   - EXFileSystem (14.1.0):
     - ExpoModulesCore
   - EXFont (10.2.1):
     - ExpoModulesCore
-  - Expo (46.0.16):
+  - Expo (46.0.20):
     - ExpoModulesCore
-  - ExpoKeepAwake (10.2.0):
+  - ExpoKeepAwake (10.2.1):
     - ExpoModulesCore
-  - ExpoModulesCore (0.11.8):
+  - ExpoModulesCore (0.11.10):
     - React-Core
     - ReactCommon/turbomodule/core
   - EXSplashScreen (0.16.2):
@@ -258,7 +256,7 @@ PODS:
   - react-native-geolocation (2.1.0):
     - React-Core
   - react-native-plugin (2.2.1):
-    - BluedotPointSDK (= 15.6.4)
+    - BluedotPointSDK (= 15.6.5)
     - React
   - React-perflogger (0.69.4)
   - React-RCTActionSheet (0.69.4):
@@ -326,15 +324,15 @@ PODS:
     - React-jsi (= 0.69.4)
     - React-logger (= 0.69.4)
     - React-perflogger (= 0.69.4)
-  - RNCAsyncStorage (1.17.10):
+  - RNCAsyncStorage (1.17.11):
     - React-Core
   - RNCPushNotificationIOS (1.10.1):
     - React-Core
-  - RNGestureHandler (2.5.0):
+  - RNGestureHandler (2.9.0):
     - React-Core
   - RNPermissions (3.6.1):
     - React-Core
-  - RNReanimated (2.11.0):
+  - RNReanimated (2.14.4):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -361,7 +359,7 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.15.0):
+  - RNScreens (3.19.0):
     - React-Core
     - React-RCTImage
   - Yoga (1.14.0)
@@ -373,7 +371,6 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
-  - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - Expo (from `../node_modules/expo`)
@@ -441,8 +438,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-application/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
-  EXErrorRecovery:
-    :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
@@ -539,17 +534,16 @@ SPEC CHECKSUMS:
   appcenter-core: c593b2e4ac28d6a21b6a217c4a5e6b3de7b0b00f
   appcenter-crashes: d9ae1c9296974c1c433600fa2f320e0ba1f12bdf
   AppCenterReactNativeShared: f395caeabde0dc3a11609dbcb737d0f14cd40e79
-  BluedotPointSDK: cfd2a0c60867f93c838099803db6d8a1dca6388b
+  BluedotPointSDK: bf32e5cf953f48d8a9c218985969bb1bb511f077
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   EXApplication: e418d737a036e788510f2c4ad6c10a7d54d18586
   EXConstants: 7c44785d41d8e959d527d23d29444277a4d1ee73
-  EXErrorRecovery: 74d71ee59f6814315457b09d68e86aa95cc7d05d
   EXFileSystem: 927e0a8885aa9c49e50fc38eaba2c2389f2f1019
   EXFont: 06df627203afcb8a3b3152ec06eb2f11f46f0cff
-  Expo: 7ac824960a6059d6c68e73f432c8e6bf6d92a0ef
-  ExpoKeepAwake: 0e8f18142e71bbf2c7f6aa66ebed249ba1420320
-  ExpoModulesCore: 39ec590ce622289c060183aba57f77b1e73b4e11
+  Expo: c2afed3f226befffaed962e9bacb5e0296acd254
+  ExpoKeepAwake: 8b47e5358d54ea4922b630a74f2acb026ab7a28b
+  ExpoModulesCore: 1b2f5f91eff132671f6d0642aad2ba7915c6ff41
   EXSplashScreen: 799bece80089219b2c989c1082d70f3b00995cda
   FBLazyVector: c71b8c429a8af2aff1013934a7152e9d9d0c937d
   FBReactNativeSpec: cb0df4f0084281b394f76bb9b4d1d9540f35963f
@@ -571,7 +565,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8a3d3f5dcd23a91e8c80b1bf0e96902cd1dca999
   React-logger: 1088859f145b8f6dd0d3ed051a647ef0e3e80fad
   react-native-geolocation: 69f4fd37650b8e7fee91816d395e62dd16f5ab8d
-  react-native-plugin: 5ada8993b3156e5cbaba51de59a32105fdc821d2
+  react-native-plugin: 41156ea89bbc0862d911b0128bf880a4672053a8
   React-perflogger: cb386fd44c97ec7f8199c04c12b22066b0f2e1e0
   React-RCTActionSheet: f803a85e46cf5b4066c2ac5e122447f918e9c6e5
   React-RCTAnimation: 19c80fa950ccce7f4db76a2a7f2cf79baae07fc7
@@ -584,12 +578,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: 9adb4a3cbb598d1bbd46a05256f445e4b8c70603
   React-runtimeexecutor: 61ee22a8cdf8b6bb2a7fb7b4ba2cc763e5285196
   ReactCommon: 8f67bd7e0a6afade0f20718f859dc8c2275f2e83
-  RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
+  RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
-  RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
+  RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
   RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
-  RNReanimated: 3f13cc3ffceacf8e17af959ee7822e397b9dd79f
-  RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
+  RNReanimated: ba021107f1dd90cb04c35c5d639392d5da27d065
+  RNScreens: ea4cd3a853063cda19a4e3c28d2e52180c80f4eb
   Yoga: ff994563b2fd98c982ca58e8cd9db2cdaf4dda74
 
 PODFILE CHECKSUM: 2b112b57feb0c0292ceaee494776399bda3a30e9

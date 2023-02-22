@@ -1,9 +1,8 @@
 import React from 'react';
 import { NativeRouter, Route, Routes } from "react-router-native";
+import { StatusBar } from 'expo-status-bar';
 import {
-  requestLocationPermissions,
-  requestBluetoothPermissions,
-  requestNotificationPermissions,
+  requestAllPermissions,
 } from "./helpers/permissionsHandler";
 
 import Initilize from "./components/InitializeSdk";
@@ -15,14 +14,12 @@ import Tempo from "./components/Tempo";
 export default function App() {
 
   React.useEffect(() => {
-    // Ask location permission
-    requestLocationPermissions();
-    requestBluetoothPermissions();
-    requestNotificationPermissions();
+    requestAllPermissions();
   }, []);
 
   return (
     <NativeRouter>
+      <StatusBar style="dark" />
       <Routes>
         <Route exact path="/" element={<Initilize />} />
         <Route exact path="/main" element={<Main />} />

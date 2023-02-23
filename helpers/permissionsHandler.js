@@ -43,9 +43,39 @@ export const requestBluetoothPermissions = async () => {
 };
 
 export const requestNotificationPermissions = async () => {
-  if (Platform.OS === OS.IOS) {
     await requestNotifications(['alert', 'sound']).then(({ status, settings }) => {
       console.log("Notification Permission Status: " + status);
     });
+};
+
+export const requestAllPermissions = async () => {
+  if (Platform.OS === OS.ANDROID) {
+    const currentPermissions = await checkMultiple([
+      PERMISSIONS.ANDROID.POST_NOTIFICATIONS
+    ])
+    const hasNotificationPermission = currentPermissions["android.permission.POST_NOTIFICATIONS"] === 'granted'
+
+    if (!hasNotificationPermission) {
+      await requestNotifications(['alert', 'sound']).then(({ status, settings }) => {
+        console.log("Notification Permission Status: " + status);
+        requestLocationPermissions();
+      });
+    } else {
+      await requestLocationPermissions();
+    }
+  }
+
+  if (Platform.OS === OS.IOS) {
+    await requestBluetoothPermissions();
+    await requestNotifications(['alert', 'sound']).then(({ status, settings }) => {
+      console.log("Notification Permission Status: " + status);
+
+      Geolocation.setRNConfiguration({
+        skipPermissionRequests: false,
+        authorizationLevel: 'whenInUse',
+      });
+      Geolocation.requestAuthorization();
+    });
   }
 };
+

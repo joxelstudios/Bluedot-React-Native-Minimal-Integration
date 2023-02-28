@@ -27,7 +27,7 @@ export const sendLocalNotification = (message) => {
             title: title,
             message: message,
             playSound: false,
-            smallIcon: "ic_launcher"
+            smallIcon: "ic_notification"
         })
     }
 }

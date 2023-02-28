@@ -44,6 +44,9 @@ export default function GeoTriggering() {
     
     retrieveBackgroundLocationStatus();
 
+    // Set a resourceID so notification icon can show up in Android 12 (Lollipop) and later
+    BluedotPointSdk.setNotificationIdResourceId("ic_notification");
+
   }, []);
 
   const handleStartGeotriggering = () => {

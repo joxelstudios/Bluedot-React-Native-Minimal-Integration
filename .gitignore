@@ -536,3 +536,6 @@ fabric.properties
 
 # End of https://www.gitignore.io/api/node,xcode,macos,android,cocoapods,reactnative,androidstudio,visualstudiocode
 .vscode/settings.json
+
+# Gem/bundle
+vendor/

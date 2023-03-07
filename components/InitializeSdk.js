@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BluedotPointSdk from "bluedot-react-native";
 import { useNavigate } from "react-router";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View, TouchableWithoutFeedback, Keyboard} from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";
 import styles from "../styles";
 
@@ -85,26 +85,28 @@ export default function Initialize() {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Bluedot React Native</Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Bluedot React Native</Text>
+        </View>
+
+        <Text style={styles.eventTitle}>Project ID</Text>
+        <TextInput
+          style={styles.textInput}
+          onChangeText={setProjectId}
+          value={projectId}
+          placeholder="Use your project Id here"
+        />
+
+        {error !== null && <Text>Error authenticating {error}</Text>}
+
+        <Button
+          title="Initialize"
+          onPress={handleInitializeSDK}
+          disabled={Boolean(!projectId)}
+        />
       </View>
-
-      <Text style={styles.eventTitle}>Project ID</Text>
-      <TextInput
-        style={styles.textInput}
-        onChangeText={setProjectId}
-        value={projectId}
-        placeholder="Use your project Id here"
-      />
-
-      {error !== null && <Text>Error authenticating {error}</Text>}
-
-      <Button
-        title="Initialize"
-        onPress={handleInitializeSDK}
-        disabled={Boolean(!projectId)}
-      />
-    </View>
+    </TouchableWithoutFeedback>
   );
 }

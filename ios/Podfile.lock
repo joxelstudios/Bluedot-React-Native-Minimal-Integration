@@ -365,7 +365,7 @@ PODS:
     - glog
   - react-native-geolocation (2.1.0):
     - React-Core
-  - react-native-plugin (2.3.0):
+  - react-native-plugin (2.3.1):
     - BluedotPointSDK (= 15.6.5)
     - React
   - React-perflogger (0.71.3)
@@ -753,7 +753,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 9f7c9137605e72ca0343db4cea88006cb94856dd
   React-logger: 957e5dc96d9dbffc6e0f15e0ee4d2b42829ff207
   react-native-geolocation: 69f4fd37650b8e7fee91816d395e62dd16f5ab8d
-  react-native-plugin: 9f263f939cb12b15d9796185ed06a4a432abdb1a
+  react-native-plugin: afa98730f624e955d48e36c8366785437bdefc07
   React-perflogger: af8a3d31546077f42d729b949925cc4549f14def
   React-RCTActionSheet: 57cc5adfefbaaf0aae2cf7e10bccd746f2903673
   React-RCTAnimation: 11c61e94da700c4dc915cf134513764d87fc5e2b
@@ -767,16 +767,16 @@ SPEC CHECKSUMS:
   React-RCTVibration: 5199a180d04873366a83855de55ac33ce60fe4d5
   React-runtimeexecutor: 7bf0dafc7b727d93c8cb94eb00a9d3753c446c3e
   ReactCommon: 6f65ea5b7d84deb9e386f670dd11ce499ded7b40
-  RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
+  RNCAsyncStorage: c0387f73ae56789755b9f1cd9965db51b3535aa7
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
-  RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
-  RNPermissions: dcdb7b99796bbeda6975a6e79ad519c41b251b1c
-  RNReanimated: cc5e3aa479cb9170bcccf8204291a6950a3be128
-  RNScreens: ea4cd3a853063cda19a4e3c28d2e52180c80f4eb
+  RNGestureHandler: d22d743be8fe31513ec4902578862e819f55eff3
+  RNPermissions: 22f363a3131e4f219323075c7a2375bdf1414ac2
+  RNReanimated: 871c73c8999619f0736e5d18ab0fabc454bf93c3
+  RNScreens: b0f31e223f27867f768adb7e78fed254376796c7
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 5ed1699acbba8863755998a4245daa200ff3817b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
 PODFILE CHECKSUM: 1059ecd39580995c20ceccb21ff800d6592a8277
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1

@@ -35,7 +35,9 @@ export default function Initialize() {
 
   const registerBluedotListeners = () => {
     BluedotPointSdk.on("enterZone", (event) => {
-      const message = `You have checked in ${event.zoneInfo.name}`;
+      console.log("Enter Zone callback received");
+      console.log(JSON.stringify(event))
+      const message = `You have checked in ${event.zoneInfo.name} and customData is ${JSON.stringify(event.customData)}`;
       sendLocalNotification(message);
     });
 

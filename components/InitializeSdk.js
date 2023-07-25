@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Platform } from 'react-native';
 import BluedotPointSdk from "bluedot-react-native";
 import { useNavigate } from "react-router";
 import { Button, Text, TextInput, View, TouchableWithoutFeedback, Keyboard} from "react-native";
 import { sendLocalNotification } from "../helpers/notifications";
 import styles from "../styles";
+import { OS } from '../enums'
 
 const PROJECTID = "YOUR_PROJECT_ID_GOES_HERE";
 
@@ -36,8 +38,12 @@ export default function Initialize() {
   const registerBluedotListeners = () => {
     BluedotPointSdk.on("enterZone", (event) => {
       console.log("Enter Zone callback received");
-      console.log(JSON.stringify(event))
-      const message = `You have checked in ${event.zoneInfo.name} and customData is ${JSON.stringify(event.customData)}`;
+      console.log(JSON.stringify(event));
+      var customData = event.zoneInfo.customData;
+      if (Platform.OS === OS.IOS) {
+          customData = event.customData;
+      }
+      const message = `You have checked in ${event.zoneInfo.name} and customData is ${JSON.stringify(customData)}`;
       sendLocalNotification(message);
     });
 

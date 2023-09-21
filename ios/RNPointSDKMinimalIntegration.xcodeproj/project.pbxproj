@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C80B921A6F3F58F76C31292 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RNPointSDKMinimalIntegration.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		30F48B9C29A5FE6B00D2225D /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F48B9B29A5FE6B00D2225D /* AppCenter-Config.plist */; };
 		30F48BA429A6098500D2225D /* RNPointSDKMinimalIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F48BA329A6098500D2225D /* RNPointSDKMinimalIntegrationTests.m */; };
-		37B3B797439A67F81A9C012F /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 809EEFC40990B527E82C8E7E /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */; };
+		424FC7867CE04F1E65A5F388 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233FF1942101A645E515A9FF /* libPods-RNPointSDKMinimalIntegration.a */; };
 		49AEE1865B0FEB87301D8F61 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E192B6561AC58CAF5420114 /* ExpoModulesProvider.swift */; };
+		66E3241F2A6B739E003CB222 /* EXSplashScreen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E3241D2A6A5DB2003CB222 /* EXSplashScreen.xcframework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8E58EDBB4C701E16DE7303D1 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A017FE2A67E23580D900E0A3 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */; };
 		E293EBD6794212D01AD14C6A /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27A3DE2168500951657180 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,16 +37,17 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNPointSDKMinimalIntegration/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNPointSDKMinimalIntegration/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNPointSDKMinimalIntegration/main.m; sourceTree = "<group>"; };
+		233FF1942101A645E515A9FF /* libPods-RNPointSDKMinimalIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNPointSDKMinimalIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F48B9B29A5FE6B00D2225D /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		30F48BA129A6098500D2225D /* RNPointSDKMinimalIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNPointSDKMinimalIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F48BA329A6098500D2225D /* RNPointSDKMinimalIntegrationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNPointSDKMinimalIntegrationTests.m; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-RNPointSDKMinimalIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration.debug.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-RNPointSDKMinimalIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration.release.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration/Pods-RNPointSDKMinimalIntegration.release.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-RNPointSDKMinimalIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNPointSDKMinimalIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		809EEFC40990B527E82C8E7E /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E3241D2A6A5DB2003CB222 /* EXSplashScreen.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = EXSplashScreen.xcframework; path = "../node_modules/expo-splash-screen/ios/EXSplashScreen.xcframework"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RNPointSDKMinimalIntegration/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A3FB16E2234F54142D07825 /* Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.release.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E192B6561AC58CAF5420114 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		A017FE2A67E23580D900E0A3 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC31FAF7B94767547284D7CF /* Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE27A3DE2168500951657180 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-RNPointSDKMinimalIntegration/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -56,7 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */,
+				66E3241F2A6B739E003CB222 /* EXSplashScreen.xcframework in Frameworks */,
+				424FC7867CE04F1E65A5F388 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37B3B797439A67F81A9C012F /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a in Frameworks */,
+				8E58EDBB4C701E16DE7303D1 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,9 +99,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66E3241D2A6A5DB2003CB222 /* EXSplashScreen.xcframework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-RNPointSDKMinimalIntegration.a */,
-				809EEFC40990B527E82C8E7E /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */,
+				233FF1942101A645E515A9FF /* libPods-RNPointSDKMinimalIntegration.a */,
+				A017FE2A67E23580D900E0A3 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -468,7 +472,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -496,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

@@ -14,7 +14,6 @@
 		30F48BA429A6098500D2225D /* RNPointSDKMinimalIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F48BA329A6098500D2225D /* RNPointSDKMinimalIntegrationTests.m */; };
 		424FC7867CE04F1E65A5F388 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 233FF1942101A645E515A9FF /* libPods-RNPointSDKMinimalIntegration.a */; };
 		49AEE1865B0FEB87301D8F61 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E192B6561AC58CAF5420114 /* ExpoModulesProvider.swift */; };
-		66E3241F2A6B739E003CB222 /* EXSplashScreen.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E3241D2A6A5DB2003CB222 /* EXSplashScreen.xcframework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8E58EDBB4C701E16DE7303D1 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A017FE2A67E23580D900E0A3 /* libPods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests.a */; };
 		E293EBD6794212D01AD14C6A /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE27A3DE2168500951657180 /* ExpoModulesProvider.swift */; };
@@ -58,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66E3241F2A6B739E003CB222 /* EXSplashScreen.xcframework in Frameworks */,
 				424FC7867CE04F1E65A5F388 /* libPods-RNPointSDKMinimalIntegration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +182,7 @@
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
+				8733E07BE44FF3DF3B89E22A /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -205,6 +204,7 @@
 			buildConfigurationList = 30F48BA929A6098500D2225D /* Build configuration list for PBXNativeTarget "RNPointSDKMinimalIntegrationTests" */;
 			buildPhases = (
 				ED6AD0C1C7FA3A69193D3455 /* [CP] Check Pods Manifest.lock */,
+				8A2B2A82513F554E6E73D4F6 /* [Expo] Configure project */,
 				30F48B9D29A6098500D2225D /* Sources */,
 				30F48B9E29A6098500D2225D /* Frameworks */,
 				30F48B9F29A6098500D2225D /* Resources */,
@@ -327,6 +327,44 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8733E07BE44FF3DF3B89E22A /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RNPointSDKMinimalIntegration/expo-configure-project.sh\"\n";
+		};
+		8A2B2A82513F554E6E73D4F6 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-RNPointSDKMinimalIntegration-RNPointSDKMinimalIntegrationTests/expo-configure-project.sh\"\n";
 		};
 		B907371BAB8520F10AB51F57 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -617,6 +655,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -637,11 +676,20 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+					"-Wl",
+					"-ld_classic",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -684,6 +732,10 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -701,11 +753,20 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl",
+					"-ld_classic",
+					"-Wl",
+					"-ld_classic",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;

@@ -1,6 +1,6 @@
 # Bluedot-React-Native-Minimal-Integration
 
-This App is a minimal App depicting integration of Bluedot Plugin(bluedot-react-native) https://www.npmjs.com/package/bluedot-react-native with a React Native App supporting react native version 0.69.4
+This App is a minimal App depicting integration of Bluedot Plugin(bluedot-react-native) https://www.npmjs.com/package/bluedot-react-native with a React Native App supporting react native version 0.72.5
 
 ### Notes:
 

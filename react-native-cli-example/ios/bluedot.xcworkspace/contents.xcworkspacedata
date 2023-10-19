@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../1800 McConnor Pkwy.gpx">
+   </FileRef>
+   <FileRef
       location = "group:bluedot.xcodeproj">
    </FileRef>
    <FileRef

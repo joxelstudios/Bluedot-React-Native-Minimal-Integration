@@ -14,3 +14,4 @@ If you encounter issues while running the react native apps on iOS and Android, 
    2. cd into ios and run `bundle exec pod install`
 5. Start fresh by resetting cache: `yarn start --reset-cache`
 6. Run again: `yarn ios` or `yarn android`
+

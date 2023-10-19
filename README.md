@@ -65,6 +65,6 @@ I've inlcuded a GPX file in the project (`react-native-cli-example/1800 McConnor
 
 
 
-For more information on the original example and SDK, please refer to [Bluedot's official documentation](#).
+For more information on the original example and SDK, please refer to [Bluedot's official documentation](https://docs.bluedot.io/Point%20SDK/React%20Native/Overview).
 
 **Note**: This is a forked and modified version of the original example provided by Bluedot. For any issues related to the SDK itself, it's recommended to refer to the official Bluedot support channels.

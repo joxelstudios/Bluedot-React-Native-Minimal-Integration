@@ -38,10 +38,6 @@ The `checkSDKStatus` function checks the initialization status of the SDK and ha
 ### Context Creation
 The `BluedotContext` is created using React's `createContext` API. This context serves as a centralized store for the Bluedot SDK's state and provides a way to pass this state down the component tree without having to pass props manually at every level.
 
-```tsx
-export const BluedotContext = createContext<BluedotState>(initialState);
-```
-
 ### Context Provider
 
 The `BluedotProvider` component wraps the application's components and injects the Bluedot state and methods into them. This is where the `useBluedotService` custom hook is invoked to get the SDK's state and functionalities, which are then provided to the rest of the app via the `BluedotContext.Provider`.

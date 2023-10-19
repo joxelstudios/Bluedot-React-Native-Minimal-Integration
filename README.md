@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository is a fork of Bluedot's minimal integration example. The primary purpose of this fork is to assist the Bluedot team in troubleshooting a specific error log occuring on the latest version of React-Native.
+This repository is a fork of Bluedot's minimal integration example. The primary purpose of this fork is to assist the Bluedot team in troubleshooting a specific error log occuring on iOS the latest version of React-Native.
 
 ## Key Modifications
 
@@ -12,11 +12,11 @@ A TypeScript type declaration file (`Bluedot.d.ts`) has been added to provide be
 
 ### React Native CLI Project
 
-The example project has been restructured to use the React Native CLI instead of Expo. This change offers more flexibility and control over the native modules, which is essential for integrating SDKs like Bluedot.
+The example project has been restructured to use the React Native CLI instead of Expo since this best reflects the usage scenario we are debugging.
 
 ### Bluedot SDK Initialization
 
-The bluedot.tsx file serves as the core integration point for the Bluedot SDK within the React Native project. It encapsulates the SDK's initialization, state management, and event handling logic.
+The `bluedot.tsx` file serves as the core integration point for the Bluedot SDK within the React Native project. It encapsulates the SDK's initialization, state management, and event handling logic.
 
 
 ### SDK Initialization

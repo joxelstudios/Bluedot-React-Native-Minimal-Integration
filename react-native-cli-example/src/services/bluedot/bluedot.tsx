@@ -25,13 +25,14 @@ interface BluedotState {
   handleStopGeoTriggering: () => void;
   handleInitializeSDK: () => void;
   handleResetSDK: () => void;
-  updateProjectId: (projectID: string) => void;
+  updateProjectId: () => void;
   projectId: string;
+  setProjectId: (projectID: string) => void;
 }
 
 // Constants
 const PROJECTID = 'YOUR_PROJECT_ID';
-const initialState = {
+const initialState: BluedotState = {
   error: undefined,
   isSdkInitialized: false,
   geoTriggeringActive: false,
@@ -41,6 +42,7 @@ const initialState = {
   handleResetSDK: () => {},
   updateProjectId: () => {},
   projectId: PROJECTID,
+  setProjectId: () => {},
 };
 
 /**
@@ -61,19 +63,26 @@ function useBluedotService() {
   /**
    * Check SDK initialization status.
    */
-  const checkSDKStatus = useCallback((failureError: Error) => {
-    BluedotPointSdk.isInitialized()
-      .then((isInitialized: boolean) => {
-        if (isInitialized) {
-          setIsSdkInitialized(true);
-        } else {
-          setError(failureError);
-          Alert.alert('Error', 'Location Services Inactive');
-          console.error('SDK initialization failed', failureError);
-        }
-      })
-      .catch((err: Error) => console.error(err));
-  }, []);
+  const checkSDKStatus = useCallback(
+    (failureError: Error) => {
+      BluedotPointSdk.isInitialized()
+        .then((isInitialized: boolean) => {
+          if (isInitialized) {
+            setIsSdkInitialized(true);
+            Alert.alert(
+              'The SDK is Initialized',
+              'Current Project ID: ' + projectId,
+            );
+          } else {
+            setError(failureError);
+            Alert.alert('Failed to initialize SDK', String(failureError));
+            console.error('SDK initialization failed', failureError);
+          }
+        })
+        .catch((err: Error) => console.error(err));
+    },
+    [projectId],
+  );
 
   /**
    * Checks if the Bluedot GeoTriggering is running.
@@ -136,6 +145,7 @@ function useBluedotService() {
    *  initialization fails, it sets an error message and errors the error to the console.
    */
   const handleInitializeSDK = useCallback(() => {
+    console.log('handleInitializeSDK', projectId);
     BluedotPointSdk.initialize(
       projectId,
       () => Alert.alert('Success', 'Bluedot SDK initialized successfully'),
@@ -166,7 +176,7 @@ function useBluedotService() {
       },
       errorMessage => {
         console.error(errorMessage);
-        Alert.alert('Error', 'There was an error starting geo-triggering.');
+        Alert.alert('Error.', String(errorMessage));
       },
     );
   }
@@ -188,13 +198,10 @@ function useBluedotService() {
     );
   }
 
-  const updateProjectId = useCallback(
-    (projectID: string) => {
-      setProjectId(projectID);
-      handleInitializeSDK();
-    },
-    [handleInitializeSDK],
-  );
+  const updateProjectId = useCallback(() => {
+    console.log('updateProjectId', projectId);
+    handleInitializeSDK();
+  }, [handleInitializeSDK, projectId]);
 
   return {
     error,
@@ -204,6 +211,7 @@ function useBluedotService() {
     handleStartGeoTriggering,
     handleStopGeoTriggering,
     updateProjectId,
+    setProjectId,
     geoTriggeringActive,
     projectId,
   };
@@ -212,7 +220,7 @@ function useBluedotService() {
 /**
  * The Bluedot context.
  */
-export const BluedotContext = createContext<BluedotState>(initialState);
+const BluedotContext = createContext<BluedotState>(initialState);
 
 /**
  * A custom hook to access the Bluedot context.

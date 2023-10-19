@@ -4,26 +4,22 @@
  *
  * @format
  */
-
-import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
+import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  TextInput,
   View,
+  useColorScheme,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import useLocationPermission from './src/hooks/useGeolocationPermissions';
 import {BluedotProvider, useBluedot} from './src/services/bluedot/bluedot';
 
 type SectionProps = PropsWithChildren<{
@@ -56,52 +52,75 @@ function Section({children, title}: SectionProps): JSX.Element {
   );
 }
 
+function Provider({children}: PropsWithChildren): JSX.Element {
+  return <BluedotProvider>{children}</BluedotProvider>;
+}
+
+function AppWrapper(): JSX.Element {
+  return (
+    <Provider>
+      <App />
+    </Provider>
+  );
+}
+
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-  const {isSdkInitialized, handleInitializeSDK} = useBluedot();
+  const {
+    updateProjectId,
+    setProjectId,
+    projectId,
+    geoTriggeringActive,
+    handleStartGeoTriggering,
+  } = useBluedot();
+  const {requestPermission, permissionGranted} = useLocationPermission();
+
+  const handlePermissionRequest = () => {
+    if (!permissionGranted) {
+      requestPermission();
+    }
+  };
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  useEffect(() => {
-    if (!isSdkInitialized) {
-      handleInitializeSDK();
-    }
-  }, [handleInitializeSDK, isSdkInitialized]);
-
   return (
-    <BluedotProvider>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <Header />
-          <View
-            style={{
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            }}>
-            <Section title="Step One">
-              Update the form below with your Bluedot project ID.
-            </Section>
-            <Section title="See Your Changes">
-              <ReloadInstructions />
-            </Section>
-            <Section title="Debug">
-              <DebugInstructions />
-            </Section>
-            <Section title="Learn More">
-              Read the docs to discover what to do next:
-            </Section>
-            <LearnMoreLinks />
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <Header />
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+          <Section title="Step One">Grant location permissions.</Section>
+          <Button title="Submit" onPress={() => handlePermissionRequest()} />
+          <Section title="Step Two">
+            Update the form below with your Bluedot project ID.
+          </Section>
+          <TextInput
+            style={styles.input}
+            defaultValue={projectId}
+            onChange={e => setProjectId(e.nativeEvent.text)}
+          />
+          <Button title="Submit" onPress={() => updateProjectId()} />
+          <Section title="Step Three">Start Geo Triggering Service</Section>
+          <View style={styles.container}>
+            <Text>
+              Geo Triggering Status:{' '}
+              {geoTriggeringActive ? 'Active' : 'Inactive'}
+            </Text>
+            <Button title="Start" onPress={() => handleStartGeoTriggering()} />
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </BluedotProvider>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -122,6 +141,20 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 6,
+  },
+  submit: {
+    margin: 12,
+  },
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+  },
 });
 
-export default App;
+export default AppWrapper;

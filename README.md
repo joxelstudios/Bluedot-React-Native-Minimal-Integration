@@ -49,8 +49,10 @@ The `useBluedot` custom hook serves as a consumer of the `BluedotContext`. It al
 ### Getting Started
 
 1. Clone the repository.
-2. Run `yarn install` to install dependencies.
-3. Follow the platform-specific instructions to run the project on Android or iOS.
+2. Navigate to the react-native-cli-example directory.
+3. Run `yarn install` to install dependencies.
+4. Run `yarn start` to start the Metro bundler.
+5. Follow the platform-specific instructions to run the project on Android or iOS.
 
 ### Simulating Geofencing Events
 
